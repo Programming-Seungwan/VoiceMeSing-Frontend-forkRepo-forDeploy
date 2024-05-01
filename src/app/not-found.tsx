@@ -1,8 +1,7 @@
-import Link from 'next/link'
-import { headers } from 'next/headers'
+import Link from 'next/link';
+import { headers } from 'next/headers';
 
 export default async function NotFound() {
-  
   return (
     <div>
       <p>Could not find requested resource</p>
@@ -10,5 +9,5 @@ export default async function NotFound() {
         Go <Link href="/">to home</Link>
       </p>
     </div>
-  )
+  );
 }
