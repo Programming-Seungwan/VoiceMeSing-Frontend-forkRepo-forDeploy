@@ -1,5 +1,7 @@
 # Voice Me Sing 프로젝트 frontend
 
+[배포 링크](voice-me-sing-frontend-fork-repo-for-deploy.vercel.app)
+
 ## 기술 스택 선정
 
 1. nextJS : 서버 사이드 렌더링 기능을 지원하여 검색 엔진 최적화 가능
@@ -9,13 +11,13 @@
 
 ## 페이지 별 기능
 
-1. 로그인 : 이메일 & 패스워드 기반 방식, sns 로그인 방식
-2. 회원 가입 : 이메일 & 패스워드 기반 방식, sns 로그인 방식
-3. vocal model 생성 : model name과 사용자의 vocal 파일 업로드
-4. create cover song : cover name, modelId, 사용자의
-5. profile :
-6. collections/model: 생성한 model의 정보를 볼 수 있고 이를 기반으로 음원 생성 페이지로 넘어갈 수 있음
-7. collections/song: 지금까지 생성한 음원을 볼 수 있고, 음원 듣기 & 다운로드가 가능함
+1. 로그인(`/login`) : 이메일 & 패스워드 기반 방식, sns 로그인 방식
+2. 회원 가입(`/signup`) : 이메일 & 패스워드 기반 방식, sns 로그인 방식
+3. vocal model 생성(`/train-vocal`) : model name과 사용자의 vocal 파일 업로드
+4. create cover song(`/create-song`) : cover name, modelId, 사용자의
+5. profile(`/profile`) :
+6. collections/model(`/collections/model`): 생성한 model의 정보를 볼 수 있고 이를 기반으로 음원 생성 페이지로 넘어갈 수 있음
+7. collections/song(`/collections/song`): 지금까지 생성한 음원을 볼 수 있고, 음원 듣기 & 다운로드가 가능함
 
 ### 기본 레이아웃 컨셉
 
