@@ -10,14 +10,15 @@ export const metadata: Metadata = {
     'This is Voice Me Sing Hongik Graduation Project of Team Wandookong',
 };
 
+// 기본 html과 body 태그를 정의하는 것 이외에는 코드 제거
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="h-dvh">
+      <body className={`${inter.className} h-full`}>{children}</body>
     </html>
   );
 }
