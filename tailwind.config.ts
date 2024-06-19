@@ -10,9 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         themeColor: '#1BD760',
-        backgroundNavy: '#0c0c11',
+        backgroundNavy: '#0F0F16',
         lightNavy: '#232333',
         lightGray: '#a9a9a9',
+        hoverGray: '#46464a',
+      },
+      boxShadow: {
+        sideNavBarShadow: '4px 0 10px rgba(0, 0, 0, 0.5)',
       },
     },
   },
