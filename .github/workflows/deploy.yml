@@ -33,9 +33,9 @@ jobs:
         with:
           source-directory: 'output'
 
-          destination-github-username: [Programming-Seungwan]
+          destination-github-username: Programming-Seungwan
 
-          destination-repository-name: [VoiceMeSing-Frontend-forkRepo-forDeploy]
+          destination-repository-name: VoiceMeSing-Frontend-forkRepo-forDeploy
 
           user-email: ${{ secrets.EMAIL }}
 
