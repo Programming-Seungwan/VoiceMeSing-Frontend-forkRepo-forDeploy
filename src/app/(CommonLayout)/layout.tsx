@@ -1,4 +1,4 @@
-import SideNavBar from '@components/all/SideNavBar';
+import SideNavBar from '@components/all/SideNavBar/SideNavBar';
 
 export default function CommonLayoutLayout({
   children,
