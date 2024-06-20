@@ -16,7 +16,7 @@ const config: Config = {
         hoverGray: '#46464a',
       },
       boxShadow: {
-        sideNavBarShadow: '4px 0 10px rgba(0, 0, 0, 0.5)',
+        sideNavBarShadow: '4px 0 10px #1a1a20',
       },
     },
   },

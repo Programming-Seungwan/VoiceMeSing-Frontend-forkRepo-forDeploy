@@ -1,3 +1,5 @@
-export default function LogInLayout() {
-  return;
+export default function LogInLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return <>{children}</>;
 }

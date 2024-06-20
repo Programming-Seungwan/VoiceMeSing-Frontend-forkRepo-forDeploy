@@ -4,9 +4,9 @@ export default function CommonLayoutLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <main className="h-full flex">
+    <div className="h-full flex">
       <SideNavBar />
       {children}
-    </main>
+    </div>
   );
 }
