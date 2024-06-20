@@ -1,3 +1,5 @@
-export default function CommunityLayout() {
-  return;
+export default function CommunityLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return <>{children}</>;
 }

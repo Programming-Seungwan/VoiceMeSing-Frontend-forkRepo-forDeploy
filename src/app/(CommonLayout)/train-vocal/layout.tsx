@@ -1,3 +1,5 @@
-export default function TrainVocalLayout() {
-  return;
+export default function TrainVocalLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return <>{children}</>;
 }

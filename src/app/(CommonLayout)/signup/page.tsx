@@ -1,3 +1,10 @@
+import Footer from '@components/all/Footer/Footer';
+
 export default function SignUpPage() {
-  return <div>This is sign up</div>;
+  return (
+    <main className="rightMain">
+      <div>This is signup page</div>
+      <Footer />
+    </main>
+  );
 }

@@ -8,7 +8,7 @@ import CommunitySVG from '@public/SideNavBar/CommunitySVG.svg';
 
 export default function Tabs() {
   return (
-    <div className="w-[275px] h-[510px] flex flex-col justify-start items-center gap-x-7">
+    <div className="w-[275px] h-fit flex flex-col justify-start items-center gap-x-7">
       <div
         id="home"
         className="w-[260px] h-[60px] rounded-lg hover:bg-hoverGray"

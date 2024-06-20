@@ -1,3 +1,10 @@
-export default function Home() {
-  return <div className="grow">This is landing home page</div>;
+import Footer from '@components/all/Footer/Footer';
+
+export default function HomePage() {
+  return (
+    <main className="rightMain">
+      <div>This is landing home page</div>
+      <Footer />
+    </main>
+  );
 }

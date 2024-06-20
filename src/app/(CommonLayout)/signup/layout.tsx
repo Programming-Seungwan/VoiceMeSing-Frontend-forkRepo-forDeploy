@@ -1,3 +1,5 @@
-export default function SignUpLayout() {
-  return;
+export default function SignUpLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return <>{children}</>;
 }
