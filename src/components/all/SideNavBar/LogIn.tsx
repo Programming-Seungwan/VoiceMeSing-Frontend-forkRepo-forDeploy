@@ -1,8 +1,10 @@
+import Link from 'next/link';
 import UnlockSVG from '@public/SideNavBar/UnlockSVG.svg';
 
 export default function LogIn() {
   return (
-    <div
+    <Link
+      href="/login"
       id="login-outerDiv"
       className="w-[275px] h-[50px] flex justify-center items-center hover:cursor-pointer"
     >
@@ -13,6 +15,6 @@ export default function LogIn() {
         <p>LOG IN</p>
         <UnlockSVG />
       </div>
-    </div>
+    </Link>
   );
 }

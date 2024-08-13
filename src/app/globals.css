@@ -46,6 +46,6 @@
 
 @layer components {
   .rightMain {
-    @apply grow bg-backgroundNavy text-white flex flex-col justify-between;
+    @apply grow bg-backgroundNavy text-white flex flex-col relative;
   }
 }
