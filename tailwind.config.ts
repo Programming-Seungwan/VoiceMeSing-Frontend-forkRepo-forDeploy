@@ -17,6 +17,7 @@ const config: Config = {
       },
       boxShadow: {
         sideNavBarShadow: '4px 0 10px #1a1a20',
+        whiteShadow: '0 0 0 1px #ffffff inset',
       },
     },
   },

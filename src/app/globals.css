@@ -44,8 +44,19 @@
   src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff');
 }
 
+input {
+  outline: none;
+  appearance: none;
+  background: transparent;
+}
+
 @layer components {
   .rightMain {
     @apply grow bg-backgroundNavy text-white flex flex-col relative;
+  }
+
+  /* 프로젝트에 기본적으로 적용되는 자간과 행간의 기준치를 의미 */
+  .normalFont {
+    @apply leading-[22px] tracking-[0.1px];
   }
 }
