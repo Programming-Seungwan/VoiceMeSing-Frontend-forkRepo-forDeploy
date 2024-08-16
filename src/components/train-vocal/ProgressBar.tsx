@@ -10,7 +10,7 @@ interface progressBarProp {
 
 export default function ProgressBar({ progressState }: progressBarProp) {
   return (
-    <div className="flex justify-center items-center gap-x-5">
+    <div className="w-[90%] flex justify-center items-center gap-x-5 mt-[100px]">
       <div className="flex items-center gap-x-5">
         <GreenOneSVG />
         <p className="text-5 normalFont text-prgressBarGray">

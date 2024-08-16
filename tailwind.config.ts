@@ -9,12 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        themeColor: '#74AD44',
+        themeColor: '#4CAF50',
         backgroundNavy: '#0F0F16',
         lightNavy: '#232333',
         lightGray: '#a9a9a9',
         hoverGray: '#46464a',
-        prgressBarGray: '#adadad',
+        progressBarGray: '#adadad',
       },
       boxShadow: {
         sideNavBarShadow: '4px 0 10px #1a1a20',
