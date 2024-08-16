@@ -3,6 +3,7 @@
 import Footer from '@components/all/Footer/Footer';
 import ProgressBar from '@components/train-vocal/ProgressBar';
 import VoiceUploadForm from '@components/train-vocal/VoiceUploadForm';
+import ModelNameForm from '@components/all/ModelNameForm/ModelNameForm';
 import PageNavigator from '@components/all/PageNavigator/PageNavigator';
 import { useState } from 'react';
 
@@ -19,6 +20,7 @@ export default function TrainVocalPage() {
       </div>
       <ProgressBar progressState={progressState} />
       {progressState === 1 && <VoiceUploadForm />}
+      {progressState === 2 && <ModelNameForm />}
 
       <PageNavigator
         progressState={progressState}
