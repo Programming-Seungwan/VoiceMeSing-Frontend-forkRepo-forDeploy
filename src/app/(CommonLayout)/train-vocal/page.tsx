@@ -4,7 +4,7 @@ import Footer from '@components/all/Footer/Footer';
 import ProgressBar from '@components/train-vocal/ProgressBar';
 import VoiceUploadForm from '@components/train-vocal/VoiceUploadForm';
 import ModelNameForm from '@components/all/ModelNameForm/ModelNameForm';
-import PageNavigator from '@components/all/PageNavigator/PageNavigator';
+import TrainVocalPageNavigator from '@components/all/PageNavigator/TrainVocalPageNavigator';
 import TrainVocalComplete from '@components/train-vocal/TrainVocalComplete';
 import { useState } from 'react';
 
@@ -16,14 +16,14 @@ export default function TrainVocalPage() {
 
   return (
     <main className="rightMain items-center overflow-y-scroll relative">
-      <div className="w-[90%] flex justify-start items-center mt-[110px]">
+      <div className="w-[90%] flex justify-start items-center mt-[50px]">
         <span className="text-white fontNormal text-[35px]">Train Vocal</span>
       </div>
       <ProgressBar progressState={progressState} />
       {progressState === 1 && <VoiceUploadForm />}
       {progressState === 2 && <ModelNameForm />}
       {progressState === 3 && <TrainVocalComplete />}
-      <PageNavigator
+      <TrainVocalPageNavigator
         progressState={progressState}
         handleProgressState={handleProgressState}
       />

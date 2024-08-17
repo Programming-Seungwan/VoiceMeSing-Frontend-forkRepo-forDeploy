@@ -2,11 +2,11 @@ import LeftGrayArrowSVG from '@public/all/PageNavigator/leftGrayArrow.svg';
 import RightGreenArrowSVG from '@public/all/PageNavigator/rightGreenArrow.svg';
 
 interface PageNavigatorProp {
-  progressState: 1 | 2 | 3;
-  handleProgressState: (nextState: 1 | 2 | 3) => void;
+  progressState: 1 | 2 | 3 | 4;
+  handleProgressState: (nextState: 1 | 2 | 3 | 4) => void;
 }
 
-export default function PageNavigator({
+export default function CreateSongPageNavigator({
   progressState,
   handleProgressState,
 }: PageNavigatorProp) {
@@ -16,7 +16,9 @@ export default function PageNavigator({
     } else if (progressState === 2) {
       handleProgressState(3);
     } else if (progressState === 3) {
-      handleProgressState(3);
+      handleProgressState(4);
+    } else if (progressState === 4) {
+      handleProgressState(4);
     }
   };
 
@@ -27,6 +29,8 @@ export default function PageNavigator({
       handleProgressState(1);
     } else if (progressState === 3) {
       handleProgressState(2);
+    } else if (progressState === 4) {
+      handleProgressState(3);
     }
   };
 
