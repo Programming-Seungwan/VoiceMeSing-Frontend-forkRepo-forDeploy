@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function EmailPasswordSignupSection() {
-  const [email, setEmail] = useState<string | null>(null);
-  const [password, setPassword] = useState<string | null>(null);
-  const [nickname, setNickname] = useState<string | null>(null);
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+  const [nickname, setNickname] = useState<string>();
 
   const router = useRouter();
 
@@ -52,6 +52,7 @@ export default function EmailPasswordSignupSection() {
           placeholder="name.domain.com"
           className="shadow-whiteShadow w-full h-10 rounded-[5px] pl-3"
           onChange={(event) => handleChangeEmail(event.target.value)}
+          value={email}
         />
       </div>
       <div className="w-[60%] h-fit flex flex-col gap-y-[35px] py-5">
@@ -61,6 +62,7 @@ export default function EmailPasswordSignupSection() {
           placeholder="Enter your secret password"
           className="shadow-whiteShadow w-full h-10 rounded-[5px] pl-3"
           onChange={(event) => handleChangePassword(event.target.value)}
+          value={password}
         />
       </div>
       <div className="w-[60%] h-fit flex flex-col gap-y-[35px] py-5">
@@ -70,6 +72,7 @@ export default function EmailPasswordSignupSection() {
           placeholder="Enter your secret nickname"
           className="shadow-whiteShadow w-full h-10 rounded-[5px] pl-3"
           onChange={(event) => handleChangeNickname(event.target.value)}
+          value={nickname}
         />
       </div>
       <div className="w-[60%] h-fit flex justify-center items-center pt-5">
