@@ -13,6 +13,8 @@ export default function TrainVocalPage() {
   const handleProgressState = (newState: 1 | 2 | 3) => {
     setProgressState(newState);
   };
+  const [audioFile, setAudioFile] = useState<File | null>(null);
+  const [modelName, setModelName] = useState<string>('');
 
   return (
     <main className="rightMain items-center overflow-y-scroll relative">
@@ -20,9 +22,13 @@ export default function TrainVocalPage() {
         <span className="text-white fontNormal text-[35px]">Train Vocal</span>
       </div>
       <ProgressBar progressState={progressState} />
-      {progressState === 1 && <VoiceUploadForm />}
-      {progressState === 2 && <ModelNameForm />}
-      {progressState === 3 && <TrainVocalComplete />}
+      {progressState === 1 && <VoiceUploadForm setAudioFile={setAudioFile} />}
+      {progressState === 2 && (
+        <ModelNameForm modelName={modelName} setModelName={setModelName} />
+      )}
+      {progressState === 3 && (
+        <TrainVocalComplete audioFile={audioFile} modelName={modelName} />
+      )}
       <TrainVocalPageNavigator
         progressState={progressState}
         handleProgressState={handleProgressState}

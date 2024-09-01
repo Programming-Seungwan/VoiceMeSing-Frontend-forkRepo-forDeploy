@@ -1,12 +1,27 @@
 'use client';
 import TipUI from '@components/all/UploadForm/TipUI';
 import FileUploadUISVG from '@public/all/UploadForm/FileUploadUI.svg';
-import { useRef } from 'react';
+import { ChangeEvent, useRef } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
-export default function VoiceUploadForm() {
+interface voiceUploadFromProp {
+  setAudioFile: Dispatch<SetStateAction<File | null>>;
+}
+
+export default function VoiceUploadForm({ setAudioFile }: voiceUploadFromProp) {
   const voiceFileInputRef = useRef<HTMLInputElement>(null);
   const handleClickVoiceUploadForm = () => {
     voiceFileInputRef.current?.click();
+  };
+
+  const handleChangeAudioFile = (event: ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+
+    if (files && files.length > 0) {
+      const selectedFile = files[0];
+
+      setAudioFile(selectedFile);
+    }
   };
 
   return (
@@ -22,10 +37,11 @@ export default function VoiceUploadForm() {
         <input
           type="file"
           name="audiofile"
-          accept=".wav"
+          accept=".wav,.mp3,.pdf"
           required
           ref={voiceFileInputRef}
           className="hidden"
+          onChange={handleChangeAudioFile}
         />
       </form>
     </div>
