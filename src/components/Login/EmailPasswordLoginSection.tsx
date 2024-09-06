@@ -20,6 +20,9 @@ export default function EmailPasswordLoginSection() {
       `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/login`,
       {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           email: email,
           password: password,
@@ -30,6 +33,8 @@ export default function EmailPasswordLoginSection() {
     if (!response.ok) {
       throw new Error('로그인 로직에 실패했습니다!');
     }
+
+    const access = response.headers.get('access');
   };
 
   return (
