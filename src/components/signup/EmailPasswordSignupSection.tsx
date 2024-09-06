@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function EmailPasswordSignupSection() {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
-  const [nickname, setNickname] = useState<string>();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [nickname, setNickname] = useState<string>('');
 
   const router = useRouter();
 
@@ -28,6 +28,9 @@ export default function EmailPasswordSignupSection() {
       `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/signup`,
       {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           email: email,
           password: password,
