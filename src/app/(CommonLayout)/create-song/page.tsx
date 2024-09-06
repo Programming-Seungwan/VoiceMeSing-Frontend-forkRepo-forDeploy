@@ -13,6 +13,8 @@ export default function CreateSongPage() {
   const handleProgressState = (newState: 1 | 2 | 3 | 4) => {
     setProgressState(newState);
   };
+  const [audioFile, setAudioFile] = useState<File | null>(null);
+
   return (
     <main className="rightMain items-center overflow-y-scroll relative">
       <div className="w-[90%] flex justify-start items-center mt-[50px]">
@@ -20,7 +22,9 @@ export default function CreateSongPage() {
       </div>
       <ProgressBar progressState={progressState} />
       {progressState === 1 && <CreateSongFirstStep />}
-      {progressState === 2 && <CreateSongSecondStep />}
+      {progressState === 2 && (
+        <CreateSongSecondStep setAudioFile={setAudioFile} />
+      )}
       {progressState === 3 && <CreateSongThirdStep />}
       {progressState === 4 && <CreateSongComplete />}
       <CreateSongPageNavigator
