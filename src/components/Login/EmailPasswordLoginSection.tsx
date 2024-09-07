@@ -2,8 +2,8 @@
 import { useState } from 'react';
 
 export default function EmailPasswordLoginSection() {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const handleChangeEmail = (email: string): void => {
     setEmail(email);
@@ -20,6 +20,7 @@ export default function EmailPasswordLoginSection() {
       `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/login`,
       {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
