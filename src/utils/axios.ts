@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const REFRESH_URL = '/reissue';
 
-const axiosClient = axios.create({
+export const axiosClient = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}`,
   timeout: 2000,
   withCredentials: true,
