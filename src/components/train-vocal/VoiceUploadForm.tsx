@@ -5,10 +5,14 @@ import { ChangeEvent, useRef } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 
 interface voiceUploadFromProp {
+  audioFile: File | null;
   setAudioFile: Dispatch<SetStateAction<File | null>>;
 }
 
-export default function VoiceUploadForm({ setAudioFile }: voiceUploadFromProp) {
+export default function VoiceUploadForm({
+  audioFile,
+  setAudioFile,
+}: voiceUploadFromProp) {
   const voiceFileInputRef = useRef<HTMLInputElement>(null);
   const handleClickVoiceUploadForm = () => {
     voiceFileInputRef.current?.click();
@@ -37,13 +41,14 @@ export default function VoiceUploadForm({ setAudioFile }: voiceUploadFromProp) {
         <input
           type="file"
           name="audiofile"
-          accept=".wav,.mp3,.pdf"
+          accept=".wav,.mp3, .pdf"
           required
           ref={voiceFileInputRef}
           className="hidden"
           onChange={handleChangeAudioFile}
         />
       </form>
+      {audioFile?.name && <div>{audioFile.name}</div>}
     </div>
   );
 }

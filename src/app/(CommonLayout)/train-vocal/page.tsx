@@ -22,7 +22,9 @@ export default function TrainVocalPage() {
         <span className="text-white fontNormal text-[35px]">Train Vocal</span>
       </div>
       <ProgressBar progressState={progressState} />
-      {progressState === 1 && <VoiceUploadForm setAudioFile={setAudioFile} />}
+      {progressState === 1 && (
+        <VoiceUploadForm audioFile={audioFile} setAudioFile={setAudioFile} />
+      )}
       {progressState === 2 && (
         <ModelNameForm modelName={modelName} setModelName={setModelName} />
       )}
