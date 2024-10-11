@@ -1,9 +1,14 @@
 'use client';
 import { useState } from 'react';
+import { useAppDispatch } from '@hooks/reduxHooks';
+import { replaceAccessTokenState } from '@context/slices/accessToken';
+import { useRouter } from 'next/navigation';
 
 export default function EmailPasswordLoginSection() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const dispatchAccessToken = useAppDispatch();
+  const router = useRouter();
 
   const handleChangeEmail = (email: string): void => {
     setEmail(email);
@@ -35,7 +40,11 @@ export default function EmailPasswordLoginSection() {
       throw new Error('로그인 로직에 실패했습니다!');
     }
 
-    const access = response.headers.get('access');
+    if (response.headers.get('access')) {
+      const accessToken = response.headers.get('access') as string;
+      dispatchAccessToken(replaceAccessTokenState(accessToken));
+      router.replace('/');
+    }
   };
 
   return (
