@@ -28,3 +28,14 @@
 ### Trouble Shooting 😉
 
 1. 개인 public 레포지토리를 통한 배포가 아니라, organization 명의의 레포지토리를 배포하고 싶다....!
+
+## Build 🏠
+
+1. typescript
+   - `global.d.ts` : 전역적으로 사용되는 변수나 window 객체를 커스터마이징
+   - `next.d.ts` : nextJS 프레임워크를 타입스크립트와 함께 사용하기 위해 만들어지는 설정 파일로서, 개발자가 건드릴 필요가 없음
+2. svgr : `svg` 파일을 리액트 컴포넌트로 사용할 수 있게 도와주는 webpack 플러그인으로, svg 확장자의 파일을 끌어오면 됨
+
+## State Management
+
+1. redux : flux 디자인 패턴에 입각한 전역 상태관리 라이브러리. redux tool kit을 이용하여 slice를 만들어준 뒤, 이를 store의 slice에 전달함
