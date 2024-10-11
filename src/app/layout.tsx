@@ -19,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-dvh">
-      {/* <StoreProvider> */}
-      <body className={`${inter.className} h-full`}>{children}</body>
-      {/* </StoreProvider> */}
+      <StoreProvider>
+        <body className={`${inter.className} h-full`}>{children}</body>
+      </StoreProvider>
     </html>
   );
 }

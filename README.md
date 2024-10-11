@@ -39,3 +39,4 @@
 ## State Management
 
 1. redux : flux 디자인 패턴에 입각한 전역 상태관리 라이브러리. redux tool kit을 이용하여 slice를 만들어준 뒤, 이를 store의 slice에 전달함
+2. nextJS 서버는 여러 요청으로부터 오는 store가 섞이면 안되니까 클라이언트 단에서 이를 싱글턴 패턴으로 유지함. 따라서 `makeStore` 라는 함수는 `configureStore()` 함수를 반환하는 함수에 해당하고 `StoreProvider` 컴포넌트에서는 이를 클라이언트 상태로 관리함
