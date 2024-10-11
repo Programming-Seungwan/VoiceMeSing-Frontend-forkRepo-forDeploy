@@ -4,16 +4,27 @@ import RightGreenArrowSVG from '@public/all/PageNavigator/rightGreenArrow.svg';
 interface PageNavigatorProp {
   progressState: 1 | 2 | 3;
   handleProgressState: (nextState: 1 | 2 | 3) => void;
+  audioFile: File | null;
+  modelName: string | null;
 }
 
 export default function TrainVocalPageNavigator({
   progressState,
   handleProgressState,
+  audioFile,
+  modelName,
 }: PageNavigatorProp) {
   const clickRightArrow = () => {
     if (progressState === 1) {
+      if (audioFile === null) {
+        return;
+      }
+
       handleProgressState(2);
     } else if (progressState === 2) {
+      if (modelName === null) {
+        return;
+      }
       handleProgressState(3);
     } else if (progressState === 3) {
       handleProgressState(3);

@@ -14,7 +14,7 @@ export default function TrainVocalPage() {
     setProgressState(newState);
   };
   const [audioFile, setAudioFile] = useState<File | null>(null);
-  const [modelName, setModelName] = useState<string>('');
+  const [modelName, setModelName] = useState<string | null>(null);
 
   return (
     <main className="rightMain items-center overflow-y-scroll relative">
@@ -34,6 +34,8 @@ export default function TrainVocalPage() {
       <TrainVocalPageNavigator
         progressState={progressState}
         handleProgressState={handleProgressState}
+        audioFile={audioFile}
+        modelName={modelName}
       />
       <Footer />
     </main>

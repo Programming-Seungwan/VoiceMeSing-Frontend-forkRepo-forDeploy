@@ -3,8 +3,8 @@ import SendAirplaneSVG from '@public/all/modelNameForm/sendAirplane.svg';
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 interface modelNameFormProp {
-  modelName: string;
-  setModelName: Dispatch<SetStateAction<string>>;
+  modelName: string | null;
+  setModelName: Dispatch<SetStateAction<string | null>>;
 }
 
 export default function ModelNameForm({
