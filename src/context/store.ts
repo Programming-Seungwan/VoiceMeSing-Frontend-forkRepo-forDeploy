@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import accessTokenReducer from '@context/slices/accessToken';
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: {
+      accessToken: accessTokenReducer,
+    },
   });
 };
 
