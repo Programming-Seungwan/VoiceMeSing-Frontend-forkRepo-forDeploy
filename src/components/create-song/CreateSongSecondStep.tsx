@@ -4,10 +4,12 @@ import VoiceUploadForm from '@components/train-vocal/VoiceUploadForm';
 import { Dispatch, SetStateAction } from 'react';
 
 interface createSongSecondStepProp {
+  audioFile: File | null;
   setAudioFile: Dispatch<SetStateAction<File | null>>;
 }
 
 export default function CreateSongSecondStep({
+  audioFile,
   setAudioFile,
 }: createSongSecondStepProp) {
   return (
@@ -16,7 +18,7 @@ export default function CreateSongSecondStep({
         <MicrophoneSVG />
         <span className="text-[20px] normalFont">Upload your Own Voice</span>
       </div>
-      <VoiceUploadForm setAudioFile={setAudioFile} />
+      <VoiceUploadForm audioFile={audioFile} setAudioFile={setAudioFile} />
     </div>
   );
 }

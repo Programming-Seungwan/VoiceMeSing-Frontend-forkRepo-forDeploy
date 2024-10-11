@@ -23,7 +23,10 @@ export default function CreateSongPage() {
       <ProgressBar progressState={progressState} />
       {progressState === 1 && <CreateSongFirstStep />}
       {progressState === 2 && (
-        <CreateSongSecondStep setAudioFile={setAudioFile} />
+        <CreateSongSecondStep
+          audioFile={audioFile}
+          setAudioFile={setAudioFile}
+        />
       )}
       {progressState === 3 && <CreateSongThirdStep />}
       {progressState === 4 && <CreateSongComplete />}
