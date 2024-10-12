@@ -6,7 +6,9 @@ import VoiceUploadForm from '@components/train-vocal/VoiceUploadForm';
 import ModelNameForm from '@components/all/ModelNameForm/ModelNameForm';
 import TrainVocalPageNavigator from '@components/all/PageNavigator/TrainVocalPageNavigator';
 import TrainVocalComplete from '@components/train-vocal/TrainVocalComplete';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useAppSelector } from '@hooks/reduxHooks';
+import { useRouter } from 'next/navigation';
 
 export default function TrainVocalPage() {
   const [progressState, setProgressState] = useState<1 | 2 | 3>(1);
@@ -15,6 +17,16 @@ export default function TrainVocalPage() {
   };
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [modelName, setModelName] = useState<string | null>(null);
+  const accessTokenSelector = useAppSelector(
+    (selector) => selector.accessToken.accessToken
+  );
+  const router = useRouter();
+
+  useEffect(() => {
+    if (accessTokenSelector === null) {
+      router.replace('/login');
+    }
+  }, []);
 
   return (
     <main className="rightMain items-center overflow-y-scroll relative">
