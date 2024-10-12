@@ -1,6 +1,4 @@
-// import { Skeleton } from './skeleton';
 import { Skeleton } from '@components/all/Skeleton/Skeleton';
-// import { Search, Trash2 } from 'lucide-react';
 import RecyclingBinSVG from '@public/collections/recyclingBin.svg';
 import MagnifyingGlassSVG from '@public/all/vocalNameSearchInput/magnifyingGlassSM.svg';
 
@@ -10,10 +8,10 @@ export default function CollectionsModelSkeleton() {
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex justify-between items-center">
-          <Skeleton className="h-10 w-48 bg-gray-800" />
+          <Skeleton className="h-12 w-48 bg-gray-800" />
           <div className="relative">
-            <Skeleton className="h-10 w-64 md:w-96 bg-gray-800 rounded-full" />
-            <MagnifyingGlassSVG className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <Skeleton className="h-12 w-64 md:w-96 bg-gray-800 rounded-full" />
+            <MagnifyingGlassSVG className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 " />
           </div>
         </div>
 
