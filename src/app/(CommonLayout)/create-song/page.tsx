@@ -1,14 +1,12 @@
 'use client';
 import Footer from '@components/all/Footer/Footer';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ProgressBar from '@components/create-song/ProgressBar';
 import CreateSongFirstStep from '@components/create-song/CreateSongFirstStep';
 import CreateSongSecondStep from '@components/create-song/CreateSongSecondStep';
 import CreateSongThirdStep from '@components/create-song/CreateSongThirdStep';
 import CreateSongComplete from '@components/create-song/CreateSongComplete';
 import CreateSongPageNavigator from '@components/all/PageNavigator/CreateSongPageNavigator';
-import { useAppSelector } from '@hooks/reduxHooks';
-import { useRouter } from 'next/navigation';
 import CreateSongSkeleton from '@components/create-song/CreateSongSkeleton';
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
 
