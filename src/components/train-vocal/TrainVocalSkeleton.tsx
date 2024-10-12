@@ -2,7 +2,7 @@ import { Skeleton } from '@components/all/Skeleton/Skeleton';
 
 export default function TrainVocalSkeleton() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-4">
+    <div className="min-h-screen grow rightMain justify-center items-center">
       <div className="w-full max-w-md space-y-8">
         {/* Title Skeleton */}
         <Skeleton className="h-10 w-48 mx-auto bg-gray-800" />

@@ -9,6 +9,7 @@ import TrainVocalComplete from '@components/train-vocal/TrainVocalComplete';
 import { useState, useEffect } from 'react';
 import { useAppSelector } from '@hooks/reduxHooks';
 import { useRouter } from 'next/navigation';
+import TrainVocalSkeleton from '@components/train-vocal/TrainVocalSkeleton';
 
 export default function TrainVocalPage() {
   const [progressState, setProgressState] = useState<1 | 2 | 3>(1);
@@ -24,32 +25,43 @@ export default function TrainVocalPage() {
 
   useEffect(() => {
     if (accessTokenSelector === null) {
-      router.replace('/login');
+      router.replace('/NoneLoginUser');
     }
   }, []);
 
   return (
-    <main className="rightMain items-center overflow-y-scroll relative">
-      <div className="w-[90%] flex justify-start items-center mt-[50px]">
-        <span className="text-white fontNormal text-[35px]">Train Vocal</span>
-      </div>
-      <ProgressBar progressState={progressState} />
-      {progressState === 1 && (
-        <VoiceUploadForm audioFile={audioFile} setAudioFile={setAudioFile} />
+    <>
+      {accessTokenSelector === null ? (
+        <TrainVocalSkeleton />
+      ) : (
+        <main className="rightMain items-center overflow-y-scroll relative">
+          <div className="w-[90%] flex justify-start items-center mt-[50px]">
+            <span className="text-white fontNormal text-[35px]">
+              Train Vocal
+            </span>
+          </div>
+          <ProgressBar progressState={progressState} />
+          {progressState === 1 && (
+            <VoiceUploadForm
+              audioFile={audioFile}
+              setAudioFile={setAudioFile}
+            />
+          )}
+          {progressState === 2 && (
+            <ModelNameForm modelName={modelName} setModelName={setModelName} />
+          )}
+          {progressState === 3 && (
+            <TrainVocalComplete audioFile={audioFile} modelName={modelName} />
+          )}
+          <TrainVocalPageNavigator
+            progressState={progressState}
+            handleProgressState={handleProgressState}
+            audioFile={audioFile}
+            modelName={modelName}
+          />
+          <Footer />
+        </main>
       )}
-      {progressState === 2 && (
-        <ModelNameForm modelName={modelName} setModelName={setModelName} />
-      )}
-      {progressState === 3 && (
-        <TrainVocalComplete audioFile={audioFile} modelName={modelName} />
-      )}
-      <TrainVocalPageNavigator
-        progressState={progressState}
-        handleProgressState={handleProgressState}
-        audioFile={audioFile}
-        modelName={modelName}
-      />
-      <Footer />
-    </main>
+    </>
   );
 }
