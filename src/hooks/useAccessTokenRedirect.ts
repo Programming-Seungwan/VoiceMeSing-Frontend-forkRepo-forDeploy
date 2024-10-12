@@ -12,7 +12,9 @@ const useAccessTokenRedirect = () => {
     if (accessToken === null) {
       router.replace('/NoneLoginUser');
     }
-  }, [accessToken]);
+  }, [accessToken, router]);
+
+  return accessToken;
 };
 
 export default useAccessTokenRedirect;
