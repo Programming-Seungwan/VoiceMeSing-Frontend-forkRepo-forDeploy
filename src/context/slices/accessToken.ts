@@ -13,7 +13,10 @@ export const accessTokenSlice = createSlice({
   name: 'accessToken',
   initialState,
   reducers: {
-    replaceAccessTokenState: (prevState, action: PayloadAction<string>) => {
+    replaceAccessTokenState: (
+      prevState,
+      action: PayloadAction<string | null>
+    ) => {
       prevState.accessToken = action.payload;
     },
   },

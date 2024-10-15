@@ -1,10 +1,15 @@
 import LockSVG from '@public/SideNavBar/LockSVG.svg';
 
-export default function Logout() {
+interface LogoutProps {
+  handleClickLogout: () => void;
+}
+
+export default function Logout({ handleClickLogout }: LogoutProps) {
   return (
     <div
       id="logout-outerDiv"
       className="w-[275px] h-[50px] flex justify-center items-center hover:cursor-pointer"
+      onClick={handleClickLogout}
     >
       <div
         id="logout-innerDiv"
