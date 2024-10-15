@@ -1,6 +1,10 @@
+'use client';
 import Footer from '@components/all/Footer/Footer';
+import useReissueAccessTokenWithRefreshToken from '@hooks/useReissueAccessTokenWithRefreshToken';
 
 export default function HomePage() {
+  useReissueAccessTokenWithRefreshToken();
+
   return (
     <main className="rightMain items-center overflow-y-scroll">
       <div className="h-[250px] flex justify-center items-center text-2xl tracking-[3px]">

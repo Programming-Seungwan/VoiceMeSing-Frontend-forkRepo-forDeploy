@@ -12,7 +12,7 @@ const useReissueAccessTokenWithRefreshToken = () => {
   useEffect(() => {
     async function reissueAccessTokenWithRefreshToken(): Promise<void> {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_DOMAI}/reissue`,
+        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/reissue`,
         {
           method: 'POST',
           credentials: 'include',
@@ -29,8 +29,12 @@ const useReissueAccessTokenWithRefreshToken = () => {
       }
     }
 
+    // 추후에 백엔드로 요청을 보내 rt가 발급된 적이 없다면 재발급 요청을 보내지도 말아야 하는 if 문 작성 필요
+
     if (accessTokenGlobalState === null) {
       reissueAccessTokenWithRefreshToken();
     }
   }, [accessTokenGlobalState]);
 };
+
+export default useReissueAccessTokenWithRefreshToken;
