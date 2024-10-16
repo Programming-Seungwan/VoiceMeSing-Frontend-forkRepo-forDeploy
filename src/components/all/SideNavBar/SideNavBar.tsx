@@ -5,6 +5,7 @@ import Logout from './Logout';
 import Tabs from './Tabs';
 import { useAppSelector, useAppDispatch } from '@hooks/reduxHooks';
 import { replaceAccessTokenState } from '@context/slices/accessToken';
+import { useRouter } from 'next/navigation';
 
 export default function SideNavBar() {
   const accessTokenSelector = useAppSelector(
@@ -12,6 +13,7 @@ export default function SideNavBar() {
   );
 
   const accessTokenDispatcher = useAppDispatch();
+  const router = useRouter();
 
   const invalidateRefreshToken = async () => {
     const response = await fetch(
@@ -30,6 +32,7 @@ export default function SideNavBar() {
   const handleLogout = (): void => {
     invalidateRefreshToken();
     accessTokenDispatcher(replaceAccessTokenState(null));
+    router.replace('/');
   };
 
   return (
