@@ -1,3 +1,6 @@
+'use client';
+import { useAppSelector } from '@hooks/reduxHooks';
+
 interface trainVocalCompleteProp {
   audioFile: File | null;
   modelName: string | null;
@@ -7,9 +10,33 @@ export default function TrainVocalComplete({
   audioFile,
   modelName,
 }: trainVocalCompleteProp) {
-  const handleClickMakeModelButton = (): void => {
+  const accessToken = useAppSelector(
+    (selector) => selector.accessToken.accessToken
+  );
+  const handleClickMakeModelButton = async (): Promise<void> => {
     console.log(audioFile);
     console.log(modelName);
+
+    const voiceFormData = new FormData();
+    if (audioFile && modelName) {
+      voiceFormData.append('voiceModelName', modelName);
+      voiceFormData.append('voiceFile', audioFile);
+    }
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/train-voice`,
+      {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          access: accessToken as string,
+        },
+        body: voiceFormData,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('모델명과 음성 파일 전송 요청에 오류가 발생했습니다!');
+    }
   };
 
   return (
