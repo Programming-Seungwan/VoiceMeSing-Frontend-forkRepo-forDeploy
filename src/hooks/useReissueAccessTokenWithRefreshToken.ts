@@ -11,6 +11,24 @@ const useReissueAccessTokenWithRefreshToken = () => {
 
   useEffect(() => {
     async function reissueAccessTokenWithRefreshToken(): Promise<void> {
+      const ifRtResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/refresh`,
+        {
+          method: 'POST',
+          credentials: 'include',
+        }
+      );
+
+      if (!ifRtResponse.ok) {
+        throw new Error('/refresh API 접근이 실패했습니다.');
+      }
+
+      const ifRtResponseData = await ifRtResponse.json();
+      if (!ifRtResponseData) {
+        // rt가 쿠키에 없는 사용자는 reissue 요청을 보내지 않음
+        return;
+      }
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/reissue`,
         {
