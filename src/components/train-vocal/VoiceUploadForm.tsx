@@ -41,7 +41,7 @@ export default function VoiceUploadForm({
         <input
           type="file"
           name="audiofile"
-          accept=".wav,.mp3, .pdf"
+          accept=".wav,.mp3"
           required
           ref={voiceFileInputRef}
           className="hidden"

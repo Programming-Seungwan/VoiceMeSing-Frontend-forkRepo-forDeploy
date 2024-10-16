@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { replaceAccessTokenState } from '@context/slices/accessToken';
 
 // 기존의 accessToken이 사라지면 다시 받아올 필요가 있음
+// 먼저 rt가 있는지를 검사해서 없으면 종료시키고, 있다면 access Token을 새로 받아와서 전역 상태로 만듬
 const useReissueAccessTokenWithRefreshToken = () => {
   const accessTokenGlobalState = useAppSelector(
     (selector) => selector.accessToken.accessToken

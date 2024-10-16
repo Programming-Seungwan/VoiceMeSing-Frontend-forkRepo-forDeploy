@@ -9,6 +9,7 @@ import TrainVocalComplete from '@components/train-vocal/TrainVocalComplete';
 import { useState } from 'react';
 import TrainVocalSkeleton from '@components/train-vocal/TrainVocalSkeleton';
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
+import useReissueAccessTokenWithRefreshToken from '@hooks/useReissueAccessTokenWithRefreshToken';
 
 export default function TrainVocalPage() {
   const [progressState, setProgressState] = useState<1 | 2 | 3>(1);
