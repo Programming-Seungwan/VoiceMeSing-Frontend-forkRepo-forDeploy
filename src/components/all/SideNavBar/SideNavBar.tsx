@@ -6,11 +6,20 @@ import Tabs from './Tabs';
 import { useAppSelector, useAppDispatch } from '@hooks/reduxHooks';
 import { replaceAccessTokenState } from '@context/slices/accessToken';
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import SideNavBarSkeleton from './SideNavBarSkeleton';
 
 export default function SideNavBar() {
   const accessTokenSelector = useAppSelector(
     (selector) => selector.accessToken.accessToken
   );
+
+  const [ifFirstSideBarRender, setIfFirstSideBarRender] =
+    useState<boolean>(true);
+
+  useEffect(() => {
+    setIfFirstSideBarRender(false);
+  }, []);
 
   const accessTokenDispatcher = useAppDispatch();
   const router = useRouter();
@@ -34,6 +43,10 @@ export default function SideNavBar() {
     accessTokenDispatcher(replaceAccessTokenState(null));
     router.replace('/');
   };
+
+  if (ifFirstSideBarRender === true) {
+    return <SideNavBarSkeleton />;
+  }
 
   return (
     <nav className="w-[300px] h-full flex flex-col items-center bg-backgroundNavy text-white gap-x-4 overflow-y-scroll shadow-sideNavBarShadow">
