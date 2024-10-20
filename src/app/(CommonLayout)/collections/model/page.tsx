@@ -1,6 +1,6 @@
 'use client';
 import Footer from '@components/all/Footer/Footer';
-import VocalNameSearchInput from '@components/collections/model/VocalNameSearchInput';
+import NameSearchInput from '@components/collections/model/NameSearchInput';
 import CollectionVocalItemSection from '@components/collections/model/CollectionVocalItemSection';
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
 import CollectionsModelSkeleton from '@components/collections/model/CollectionsModelSkeleton';
@@ -52,7 +52,7 @@ export default function CollectionsModelPage() {
             <span className="text-white fontNormal text-[35px]">
               Collections / Vocal
             </span>
-            <VocalNameSearchInput />
+            <NameSearchInput category="model" />
           </div>
           <CollectionVocalItemSection />
           <Footer />

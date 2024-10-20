@@ -1,5 +1,6 @@
-import CollectionsCommonItem from '@components/collections/CollectionsCommonItem';
-import { collectionsCommonItemProp } from '@components/collections/CollectionsCommonItem';
+import CollectionsCommonItem, {
+  collectionsCommonItemProp,
+} from '@components/collections/CollectionsCommonItem';
 
 // 해당 페이지에서 백엔드 단에 요청하여 데이터를 받아 온다
 
