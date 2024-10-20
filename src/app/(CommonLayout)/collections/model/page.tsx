@@ -13,7 +13,7 @@ interface voiceModelProp {
 
 export default function CollectionsModelPage() {
   const accessToken = useAccessTokenRedirect();
-  const [collectionModel, setCollectionModel] = useState(null);
+  const [collectionModelList, setCollectionModelList] = useState(null);
 
   useEffect(() => {
     async function getUserColletionModels() {
