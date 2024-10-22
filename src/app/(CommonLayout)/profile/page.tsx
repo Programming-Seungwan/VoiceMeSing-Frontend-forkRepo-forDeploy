@@ -49,7 +49,7 @@ export default function ProfilePage() {
 
   console.log(userProfileInfo);
 
-  if (accessToken === null) {
+  if (accessToken === null || userProfileInfo === null) {
     return <ProfileSkeleton />;
   }
 
@@ -66,7 +66,7 @@ export default function ProfilePage() {
         {/* 해당 영역은 추후에 알맞는 이미지로 대체될 것임 */}
         <SeungwanImageSVG />
       </div>
-      <ProfileForm />
+      <ProfileForm nickname={userProfileInfo.nickname} />
       <Footer />
     </main>
   );

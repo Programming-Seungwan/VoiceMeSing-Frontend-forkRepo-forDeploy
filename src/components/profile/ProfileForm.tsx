@@ -3,11 +3,11 @@
 import EditPencilSVG from '@public/all/modelNameForm/editPencil.svg';
 import { useState } from 'react';
 
-export default function ProfileForm() {
-  const [namePlaceholder, setNamePlaceholder] = useState<string>(
-    'Programming-seungwan'
-  );
+interface profileFormProp {
+  nickname: string;
+}
 
+export default function ProfileForm({ nickname }: profileFormProp) {
   return (
     <form className="flex flex-col items-center grow">
       <label htmlFor="nickname" className="w-full text-[20px] mb-[15px]">
@@ -19,7 +19,7 @@ export default function ProfileForm() {
           type="text"
           id="nickname"
           className="grow"
-          placeholder={namePlaceholder}
+          placeholder={nickname}
         />
         <EditPencilSVG />
       </div>
