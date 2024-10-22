@@ -32,7 +32,8 @@
    기본적으로 로그인 시에 백엔드로부터 `accessToken`과 `refreshToken`을 받는다. 전자는 api response의 body로 받으며 이를 Javascript로 제어하기 위해 `access-control-expose-header` 속성에 명시하여 컨트롤 한다. 후자는 accessToken이 프론트엔드 상태로 관리되기 때문에 새로 고침 등의 이유로 사라졌을 경우 재발급을 위한 것이지 백엔드로의 인가를 위한 것은 아니다. 이는 매번 요청 시에 자동으로 백엔드 도메인으로 전송되도록 하기 위해 쿠키에 `httpOnly` 속성과 함께 설정한다.
    현재 프론트엔드와 백엔드의 도메인이 다르므로 chrome 브라우저의 정책을 지원하기 위해 `sameSite` 속성을 none으로 설정한다. 이는 `secure` 속성을 강제하므로 프론트엔드 개발 환경을 https 로 맞춰준다. <br>
    이 과정에서 accessToken을 프론트엔드 상태로 관리하기 때문에 사용자가 새로고침하면 없어질 수있다. 따라서 해당 페이지들에서 accessToken이 바뀔 때마다 검사를 진행하는 로직이 필요하다. 따라서 `/refresh` api를 이용해 해당 사용자가 refresh token을 가졌는지 확인한다. `httpOnly` 속성을 이용해 Javascript로 이에 접근하지 못함을 보장 받았기에 가능한 일이다.<br>
-   따라서 커스텀 훅도 이를 반영해 `page` 컴포넌트들에 적용한다. `useAccessTokenRedirect`훅은 이를 위해 accessToken이 변경되었 을떄 `/refresh` api로 post 요청을 날려 해당 사용자가 로그인 되었는지를 확인한다. false가 반환되는 경우에는 NoneLoginUser 페이지로 라우팅하고 그렇지 않은 경우에는 `reissue` api를 적용하는 개념이라고 생각하면 된다.
+   따라서 커스텀 훅도 이를 반영해 `page` 컴포넌트들에 적용한다. `useAccessTokenRedirect`훅은 이를 위해 accessToken이 변경되었 을떄 `/refresh` api로 post 요청을 날려 해당 사용자가 로그인 되었는지를 확인한다. false가 반환되는 경우에는 NoneLoginUser 페이지로 라우팅하고 그렇지 않은 경우에는 `reissue` api를 적용하는 개념이라고 생각하면 된다.<br>
+   현재 `useReissueAccessTokenWithRefreshToken` 훅은 기존의 `useAccessTokenRedirect`의 로직에 포함되지만, 후자는 라우팅 로직까지 포함하기 위해 만들어준 결과이다(실행 컨텍스트를 고려) -> 추후 해결 필요
 
 ## Build 🏠
 
