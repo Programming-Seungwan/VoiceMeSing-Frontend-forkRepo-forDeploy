@@ -6,9 +6,14 @@ import ProfileForm from '@components/profile/ProfileForm';
 import useReissueAccessTokenWithRefreshToken from '@hooks/useReissueAccessTokenWithRefreshToken';
 import { useRouter } from 'next/navigation';
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
+import ProfileSkeleton from '@components/profile/ProfileSkeleton';
 
 export default function ProfilePage() {
   const accessToken = useAccessTokenRedirect();
+
+  if (accessToken === null) {
+    return <ProfileSkeleton />;
+  }
 
   return (
     <main className="rightMain items-center overflow-y-scroll">
