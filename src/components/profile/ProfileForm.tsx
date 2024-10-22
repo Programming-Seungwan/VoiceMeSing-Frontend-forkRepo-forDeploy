@@ -9,7 +9,7 @@ export default function ProfileForm() {
   );
 
   return (
-    <form className="flex flex-col items-center">
+    <form className="flex flex-col items-center grow">
       <label htmlFor="nickname" className="w-full text-[20px] mb-[15px]">
         Nickname
       </label>

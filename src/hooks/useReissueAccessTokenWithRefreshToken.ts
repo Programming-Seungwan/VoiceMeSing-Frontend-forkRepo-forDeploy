@@ -54,6 +54,8 @@ const useReissueAccessTokenWithRefreshToken = () => {
       reissueAccessTokenWithRefreshToken();
     }
   }, [accessTokenGlobalState]);
+
+  return accessTokenGlobalState;
 };
 
 export default useReissueAccessTokenWithRefreshToken;

@@ -1,9 +1,15 @@
+'use client';
 import Footer from '@components/all/Footer/Footer';
 import ProfileLogoSVG from '@public/profile/profileLogo.svg';
 import SeungwanImageSVG from '@public/profile/seungwanImage.svg';
 import ProfileForm from '@components/profile/ProfileForm';
+import useReissueAccessTokenWithRefreshToken from '@hooks/useReissueAccessTokenWithRefreshToken';
+import { useRouter } from 'next/navigation';
+import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
 
 export default function ProfilePage() {
+  const accessToken = useAccessTokenRedirect();
+
   return (
     <main className="rightMain items-center overflow-y-scroll">
       <div className="flex h-[150px] items-center gap-x-[50px]">
