@@ -1,7 +1,5 @@
 import ProfileLogoSVG from '@public/profile/profileLogo.svg';
-import ProfileForm from './ProfileForm';
 import Footer from '@components/all/Footer/Footer';
-import { Skeleton } from '@components/all/Skeleton/Skeleton';
 
 export default function ProfileSkeleton() {
   return (
@@ -21,13 +19,7 @@ export default function ProfileSkeleton() {
         </div>
 
         <div className="w-[600px] h-[45px] bg-gray-800 rounded-[5px] flex items-center pl-3 pr-2 mb-[60px]">
-          <input
-            type="text"
-            id="nickname"
-            className="grow"
-            // placeholder={namePlaceholder}
-          />
-          {/* <EditPencilSVG /> */}
+          <input type="text" id="nickname" className="grow" />
         </div>
 
         <div className="w-full flex justify-start items-center">
