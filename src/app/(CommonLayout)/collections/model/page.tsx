@@ -13,7 +13,8 @@ interface voiceModelProp {
 
 export default function CollectionsModelPage() {
   const accessToken = useAccessTokenRedirect();
-  const [collectionModelList, setCollectionModelList] = useState(null);
+  const [collectionModelList, setCollectionModelList] =
+    useState<voiceModelProp | null>(null);
 
   useEffect(() => {
     async function getUserColletionModels() {
@@ -34,9 +35,9 @@ export default function CollectionsModelPage() {
         );
       }
 
-      const data = await response.json();
+      const responseData = await response.json();
 
-      console.log(data);
+      setCollectionModelList(responseData.data);
     }
 
     getUserColletionModels();

@@ -30,9 +30,9 @@ export default function CollectionsSongPage() {
         );
       }
 
-      const data = await response.json();
+      const responseData = await response.json();
 
-      console.log(data);
+      setCollectionSongList(responseData.data);
     }
 
     getUserColletionSongs();
