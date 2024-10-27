@@ -3,7 +3,6 @@ import Footer from '@components/all/Footer/Footer';
 import ProfileLogoSVG from '@public/profile/profileLogo.svg';
 import SeungwanImageSVG from '@public/profile/seungwanImage.svg';
 import ProfileForm from '@components/profile/ProfileForm';
-import useReissueAccessTokenWithRefreshToken from '@hooks/useReissueAccessTokenWithRefreshToken';
 import { useState, useEffect } from 'react';
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
 import ProfileSkeleton from '@components/profile/ProfileSkeleton';
@@ -46,8 +45,6 @@ export default function ProfilePage() {
       getUserInfoByAccessToken();
     }
   }, [accessToken]);
-
-  console.log(userProfileInfo);
 
   if (accessToken === null || userProfileInfo === null) {
     return <ProfileSkeleton />;
