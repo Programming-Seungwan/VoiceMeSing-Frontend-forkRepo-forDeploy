@@ -14,8 +14,8 @@
 1. 로그인(`/login`) : 이메일 & 패스워드 기반 방식, sns 로그인 방식
 2. 회원 가입(`/signup`) : 이메일 & 패스워드 기반 방식, sns 로그인 방식
 3. vocal model 생성(`/train-vocal`) : model name과 사용자의 vocal 파일 업로드
-4. create cover song(`/create-song`) : cover name, modelId, 사용자의
-5. profile(`/profile`) :
+4. create cover song(`/create-song`) : cover name, modelId, 사용자의 목소리 파일을 업로드하여 song을 생성하기(그 과정에서 모델을 불러오는 것은 모달 창으로 진행)
+5. profile(`/profile`) : 본인의 프로필 조회 및 아이디 및 비밀번호 변경 기능
 6. collections/model(`/collections/model`): 생성한 model의 정보를 볼 수 있고 이를 기반으로 음원 생성 페이지로 넘어갈 수 있음
 7. collections/song(`/collections/song`): 지금까지 생성한 음원을 볼 수 있고, 음원 듣기 & 다운로드가 가능함
 
@@ -47,3 +47,22 @@
 1. redux : flux 디자인 패턴에 입각한 전역 상태관리 라이브러리. redux tool kit을 이용하여 slice를 만들어준 뒤, 이를 store의 slice에 전달함
 2. nextJS 서버는 여러 요청으로부터 오는 store가 섞이면 안되니까 클라이언트 단에서 이를 싱글턴 패턴으로 유지함. 따라서 `makeStore` 라는 함수는 `configureStore()` 함수를 반환하는 함수에 해당하고 `StoreProvider` 컴포넌트에서는 이를 클라이언트 상태로 관리함
 3. train-vocal, create-song, collection, profile 페이지들은 클라이언트 상태로 관리하고 있는 accessToken이 null인지를 검사하고(그 동안 대체 progress UI를 보여줌), 없다면 다른 NoneLoginUser 페이지로 보내버림
+
+## Todos
+
+1. `/` : home 화면과 관련된 설명 UI를 추가해야함.
+2. `/collections/model`
+   - 사용자의 at를 보내서 받아온 model을 보여주는 과정 필요
+   - 각 모델마다 어떤 로고를 다채롭게 보여줄지 결정 필요
+3. `/collections/song`
+   - 사용자의 at를 보내서 받아온 song을 보여주는 과정 필요 -> song을 재생할 수 있는 UI도 만들어야 함
+   - 각 song마다 어떤 로고를 다채롭게 보여줄지 결정 필요
+4. `/create-song`
+
+   - 1 단계 : select model에서 모달을 통해서 띄워 보여줄 모델 collection 끌어와야 함
+   - 2 단계 : 음성에 해당하는 파일 upload form 구현 필요 -> 상태로 구현
+   - 3 단계 : 일단 `auto` 속성으로만 진행하는 것으로!
+   - 4 단계 : Cover song title을 사용자에게 입력받고, `create song` 버튼을 누르는 것으로
+
+5. `/community`
+   - 권한 허용을 해놓은 사용자 곡들을 죄다 긁어와서 `/collections/song` 페이지의 양식으로 보여줄 수 있는 기능이 필요함
