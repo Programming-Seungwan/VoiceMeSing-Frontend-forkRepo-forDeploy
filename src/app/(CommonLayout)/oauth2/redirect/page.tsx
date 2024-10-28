@@ -12,30 +12,29 @@ export default function OauthRedirectPage() {
   useEffect(() => {
     // 백엔드 api 호출
     async function getTokenReformat() {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/token-reformat`,
-        {
-          method: 'POST',
-          credentials: 'include',
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(
-          'failed to reformat token based on at and rt in cookie!'
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/token-reformat`,
+          {
+            method: 'POST',
+            credentials: 'include',
+          }
         );
+
+        if (!response.ok) {
+          throw new Error(
+            'failed to reformat token based on at and rt in cookie!'
+          );
+        }
+
+        const data = response.headers.get('access');
+        accessTokenDispatcher(replaceAccessTokenState(data));
+        router.replace('/');
+      } catch (err) {
+        router.replace('/NoneLoginUser');
       }
-
-      const data = response.headers.get('access');
-      accessTokenDispatcher(replaceAccessTokenState(data));
-      router.replace('/');
     }
-
-    try {
-      getTokenReformat();
-    } catch (err) {
-      router.replace('/NoneLoginUser');
-    }
+    getTokenReformat();
   }, []);
 
   return (

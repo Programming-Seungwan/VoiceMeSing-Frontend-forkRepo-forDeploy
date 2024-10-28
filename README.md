@@ -65,4 +65,8 @@
    - 4 단계 : Cover song title을 사용자에게 입력받고, `create song` 버튼을 누르는 것으로
 
 5. `/community`
+
    - 권한 허용을 해놓은 사용자 곡들을 죄다 긁어와서 `/collections/song` 페이지의 양식으로 보여줄 수 있는 기능이 필요함
+
+6. `/login`
+   - 카카오 로그인 이후에 outh2/redirect로 사용자를 보내고, 그 다음에 /token-reformat 요청을 보내 at를 받고 사용자를 홈으로 보내버림. 그런데 이렇게 상태로 들고 있는 at를 기반으로 새로고침 시, rt를 통해 reissue가 안됨
