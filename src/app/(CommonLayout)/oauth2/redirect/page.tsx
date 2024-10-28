@@ -11,12 +11,29 @@ export default function OauthRedirectPage() {
 
   useEffect(() => {
     // 백엔드 api 호출
+    async function getTokenReformat() {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/token-reformat`,
+        {
+          method: 'POST',
+          credentials: 'include',
+        }
+      );
 
-    if (true) {
-      // 백엔드에서 받아온 api reponse로 도착한 accessToken을 프론트엔드 상태로 관리
-      // accessTokenDispatcher(replaceAccessTokenState('sd'));
-      // router.replace('/');
-    } else {
+      if (!response.ok) {
+        throw new Error(
+          'failed to reformat token based on at and rt in cookie!'
+        );
+      }
+
+      const data = response.headers.get('access');
+      accessTokenDispatcher(replaceAccessTokenState(data));
+      router.replace('/');
+    }
+
+    try {
+      getTokenReformat();
+    } catch (err) {
       router.replace('/NoneLoginUser');
     }
   }, []);
