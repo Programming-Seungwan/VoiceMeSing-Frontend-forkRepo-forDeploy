@@ -25,7 +25,7 @@ const useReissueAccessTokenWithRefreshToken = () => {
       }
 
       const ifRtResponseData = await ifRtResponse.json();
-      if (!ifRtResponseData) {
+      if (!ifRtResponseData.data) {
         // rt가 쿠키에 없는 사용자는 reissue 요청을 보내지 않음
         return;
       }
