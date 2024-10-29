@@ -70,3 +70,4 @@
 
 6. `/login`
    - 카카오 로그인 이후에 outh2/redirect로 사용자를 보내고, 그 다음에 /token-reformat 요청을 보내 at를 받고 사용자를 홈으로 보내버림. 그런데 이렇게 상태로 들고 있는 at를 기반으로 새로고침 시, rt를 통해 reissue가 안됨
+   - 경빈이가 리다이렉트를 localhost로 시켜주고 있음.
