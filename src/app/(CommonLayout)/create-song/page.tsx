@@ -9,6 +9,7 @@ import CreateSongComplete from '@components/create-song/CreateSongComplete';
 import CreateSongPageNavigator from '@components/all/PageNavigator/CreateSongPageNavigator';
 import CreateSongSkeleton from '@components/create-song/CreateSongSkeleton';
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
+import SelectModelModal from '@components/create-song/SelectModelModal';
 
 export default function CreateSongPage() {
   const [progressState, setProgressState] = useState<1 | 2 | 3 | 4>(1);
@@ -17,6 +18,8 @@ export default function CreateSongPage() {
   };
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const accessToken = useAccessTokenRedirect();
+  const [isSelectModelModalOpen, setIsSelectModelModalOpen] =
+    useState<boolean>(false);
 
   return (
     <>
@@ -30,7 +33,11 @@ export default function CreateSongPage() {
             </span>
           </div>
           <ProgressBar progressState={progressState} />
-          {progressState === 1 && <CreateSongFirstStep />}
+          {progressState === 1 && (
+            <CreateSongFirstStep
+              setModelModalOpen={setIsSelectModelModalOpen}
+            />
+          )}
           {progressState === 2 && (
             <CreateSongSecondStep
               audioFile={audioFile}
@@ -43,7 +50,7 @@ export default function CreateSongPage() {
             progressState={progressState}
             handleProgressState={handleProgressState}
           />
-
+          {isSelectModelModalOpen && <SelectModelModal />}
           <Footer />
         </main>
       )}
