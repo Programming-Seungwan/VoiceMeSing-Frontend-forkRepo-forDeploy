@@ -30,7 +30,7 @@ export default function CreateSongComplete({
         {/* input */}
         <input
           type="text"
-          placeholder="Enter Your Own Vocal Name"
+          placeholder="Enter Your Own Song Name"
           className="grow ml-3"
           value={createSongName ? createSongName : ''}
           onChange={handleChangeSongName}

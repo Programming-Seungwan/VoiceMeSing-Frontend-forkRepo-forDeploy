@@ -16,7 +16,9 @@ export default function CreateSongPage() {
   const handleProgressState = (newState: 1 | 2 | 3 | 4) => {
     setProgressState(newState);
   };
+  const [coverSongId, setCoverSongId] = useState<number | null>(null);
   const [audioFile, setAudioFile] = useState<File | null>(null);
+  const [coverSongName, setCoverSongName] = useState<string | null>(null);
   const accessToken = useAccessTokenRedirect();
   const [isSelectModelModalOpen, setIsSelectModelModalOpen] =
     useState<boolean>(false);
@@ -45,12 +47,23 @@ export default function CreateSongPage() {
             />
           )}
           {progressState === 3 && <CreateSongThirdStep />}
-          {progressState === 4 && <CreateSongComplete />}
+          {/* third step은 현재 auto tune으로 ai를 모델링하기에 일단은 백엔드에 전달하는 데이터는 없다 */}
+          {progressState === 4 && (
+            <CreateSongComplete
+              createSongName={coverSongName}
+              setCreateSongName={setCoverSongName}
+            />
+          )}
           <CreateSongPageNavigator
             progressState={progressState}
             handleProgressState={handleProgressState}
           />
-          {isSelectModelModalOpen && <SelectModelModal />}
+          {isSelectModelModalOpen && (
+            <SelectModelModal
+              coverSongId={coverSongId}
+              setCoverSongId={setCoverSongId}
+            />
+          )}
           <Footer />
         </main>
       )}
