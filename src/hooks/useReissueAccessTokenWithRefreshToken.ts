@@ -13,7 +13,7 @@ const useReissueAccessTokenWithRefreshToken = () => {
   useEffect(() => {
     async function reissueAccessTokenWithRefreshToken(): Promise<void> {
       const ifRtResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/refresh`,
+        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/refresh-check`,
         {
           method: 'POST',
           credentials: 'include',

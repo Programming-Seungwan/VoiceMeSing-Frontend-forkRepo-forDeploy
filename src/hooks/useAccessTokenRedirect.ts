@@ -15,7 +15,7 @@ const useAccessTokenRedirect = () => {
   useEffect(() => {
     async function checkRtUsr() {
       const ifRtResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/refresh`,
+        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/refresh-check`,
         {
           method: 'POST',
           credentials: 'include',
