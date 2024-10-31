@@ -15,7 +15,7 @@ export default function HomePage() {
       </div>
 
       <div className="flex gap-x-[60px] h-[200px] mb-[50px]">
-        <ModelingAISVG className="h-[200px]" />
+        <ModelingAISVG className="h-[200px] animate-imageFloat" />
 
         <div className="w-[300px]  flex flex-col gap-y-5 normalFont">
           <span className="font-[45px] text-white">STEP 1</span>
@@ -27,7 +27,7 @@ export default function HomePage() {
       </div>
 
       <div className="flex gap-x-[60px] h-[200px]">
-        <MakingSongSVG />
+        <MakingSongSVG className="animate-imageFloat" />
         <div className="w-[300px] h-[200px] flex flex-col gap-y-5 normalFont">
           <span className='font-[45px] text-white"'>STEP 2</span>
           <span className="font-[30px] text-lightGray">
