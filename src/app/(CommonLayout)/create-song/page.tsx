@@ -64,6 +64,7 @@ export default function CreateSongPage() {
 
           <SelectModelModal
             isSelectModelModalOpen={isSelectModelModalOpen}
+            setModelModalOpen={setIsSelectModelModalOpen}
             coverSongId={coverSongId}
             setCoverSongId={setCoverSongId}
           />

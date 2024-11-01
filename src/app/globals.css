@@ -20,6 +20,18 @@
   display: none;
 }
 
+/* 모달이 열릴 때 초기 스타일 */
+.modal-content {
+  opacity: 0;
+  transform: scale(0.9); /* 약간 축소된 상태에서 시작 */
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.modal-content.ReactModal__Content--after-open {
+  opacity: 1;
+  transform: scale(1); /* 원래 크기로 */
+}
+
 @font-face {
   font-family: 'San Francisco';
   font-weight: 400;
