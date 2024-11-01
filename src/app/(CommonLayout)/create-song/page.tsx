@@ -28,7 +28,10 @@ export default function CreateSongPage() {
       {accessToken === null ? (
         <CreateSongSkeleton />
       ) : (
-        <main className="rightMain items-center overflow-y-scroll relative">
+        <main
+          className="rightMain items-center overflow-y-scroll relative"
+          id="create-song-modal-container"
+        >
           <div className="w-[90%] flex justify-start items-center mt-[50px]">
             <span className="text-white fontNormal text-[35px]">
               Create Song
@@ -58,12 +61,13 @@ export default function CreateSongPage() {
             progressState={progressState}
             handleProgressState={handleProgressState}
           />
-          {isSelectModelModalOpen && (
-            <SelectModelModal
-              coverSongId={coverSongId}
-              setCoverSongId={setCoverSongId}
-            />
-          )}
+
+          <SelectModelModal
+            isSelectModelModalOpen={isSelectModelModalOpen}
+            coverSongId={coverSongId}
+            setCoverSongId={setCoverSongId}
+          />
+
           <Footer />
         </main>
       )}

@@ -41,10 +41,10 @@ export default function CreateSongPageNavigator({
           className="mr-[45px] hover:cursor-pointer"
           onClick={clickLeftArrow}
         />
-        <span className="text-[40px] normalFont text-progressBarGray mr-[50px]">
+        <span className="w-[60px] text-[30px] normalFont text-progressBarGray mr-[50px]">
           Prev
         </span>
-        <span className="text-[40px] normalFont text-themeColor ml-[50px]">
+        <span className="w-[60px] text-[30px] normalFont text-themeColor ml-[50px]">
           Next
         </span>
 
