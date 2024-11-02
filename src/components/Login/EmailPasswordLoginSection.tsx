@@ -69,7 +69,7 @@ export default function EmailPasswordLoginSection() {
           value={password}
         />
       </div>
-      <div className="w-[50%] h-fit flex justify-center items-center pt-5">
+      <div className="w-[50%] h-fit flex justify-center items-center pt-2">
         <button
           className="bg-themeColor text-white rounded-[10px] w-[120px] h-[50px]"
           onClick={handleClickLoginButton}
