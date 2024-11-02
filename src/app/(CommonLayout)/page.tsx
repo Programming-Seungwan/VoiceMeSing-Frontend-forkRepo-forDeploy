@@ -2,7 +2,6 @@
 import Footer from '@components/all/Footer/Footer';
 import useReissueAccessTokenWithRefreshToken from '@hooks/useReissueAccessTokenWithRefreshToken';
 import ModelingAISVG from '@public/home/modelingAI.svg';
-import Logo from '@components/all/SideNavBar/Logo';
 import MakingSongSVG from '@public/home/makingSongAI.svg';
 
 export default function HomePage() {

@@ -1,4 +1,3 @@
-// 로그인 페이지, 백엔드로 보낼 pw와 id를 받을 form이 필요함
 import Footer from '@components/all/Footer/Footer';
 import EmailPasswordLoginSection from '@components/Login/EmailPasswordLoginSection';
 import Divider from '@components/Login/Divider';
