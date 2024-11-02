@@ -49,7 +49,7 @@ export default function EmailPasswordLoginSection() {
 
   return (
     <section className="flex flex-col mt-[40px] w-[90%] items-center">
-      <div className="w-[60%] h-fit flex flex-col gap-y-[35px] py-5">
+      <div className="w-[50%] h-fit flex flex-col gap-y-[35px] py-5">
         <span className="text-[30px] normalFont">Email</span>
         <input
           type="email"
@@ -59,7 +59,7 @@ export default function EmailPasswordLoginSection() {
           value={email}
         />
       </div>
-      <div className="w-[60%] h-fit flex flex-col gap-y-[35px] py-5">
+      <div className="w-[50%] h-fit flex flex-col gap-y-[35px] py-5">
         <span className="text-[30px] normalFont">Enter your password</span>
         <input
           type="text"
@@ -69,7 +69,7 @@ export default function EmailPasswordLoginSection() {
           value={password}
         />
       </div>
-      <div className="w-[60%] h-fit flex justify-center items-center pt-5">
+      <div className="w-[50%] h-fit flex justify-center items-center pt-5">
         <button
           className="bg-themeColor text-white rounded-[10px] w-[120px] h-[50px]"
           onClick={handleClickLoginButton}

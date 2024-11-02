@@ -20,12 +20,14 @@ export default function SocialLoginItem({ sns }: SocialLoginItemProp) {
 
   return (
     <Link href={loginURL} className="w-[50%] h-[45px]">
-      <div className="h-full shadow-whiteShadow flex items-center rounded-[15px] pl-[15px] gap-x-5">
-        {sns === 'facebook' && <FacebookLogo />}
-        {sns === 'google' && <GoogleLogo />}
-        {sns === 'kakao' && <KakaoLogo />}
-        {sns === 'naver' && <NaverLogo />}
-        <span>{`Log In with ${sns}`}</span>
+      <div className="h-full shadow-whiteShadow flex justify-center items-center rounded-[15px] relative">
+        {sns === 'facebook' && (
+          <FacebookLogo className="absolute left-[15px]" />
+        )}
+        {sns === 'google' && <GoogleLogo className="absolute left-[15px]" />}
+        {sns === 'kakao' && <KakaoLogo className="absolute left-[15px]" />}
+        {sns === 'naver' && <NaverLogo className="absolute left-[15px]" />}
+        <span className="absolute left-[40%]">{`Log In with ${sns}`}</span>
       </div>
     </Link>
   );
