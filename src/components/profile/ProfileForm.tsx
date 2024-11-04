@@ -1,13 +1,29 @@
 'use client';
 
 import EditPencilSVG from '@public/all/modelNameForm/editPencil.svg';
-import { useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 interface profileFormProp {
   nickname: string;
+  password: string;
+  changeUserProfileNickname: Dispatch<SetStateAction<string>>;
+  changeUserProfilePassword: Dispatch<SetStateAction<string>>;
 }
 
-export default function ProfileForm({ nickname }: profileFormProp) {
+export default function ProfileForm({
+  nickname,
+  password,
+  changeUserProfileNickname,
+  changeUserProfilePassword,
+}: profileFormProp) {
+  const handleChangeUserNickname = (ev: ChangeEvent<HTMLInputElement>) => {
+    changeUserProfileNickname(ev.target.value);
+  };
+
+  const handleChangeUserPassword = (ev: ChangeEvent<HTMLInputElement>) => {
+    changeUserProfilePassword(ev.target.value);
+  };
+
   return (
     <form className="flex flex-col items-center grow">
       <label htmlFor="nickname" className="w-full text-[20px] mb-[15px]">
@@ -20,6 +36,7 @@ export default function ProfileForm({ nickname }: profileFormProp) {
           id="nickname"
           className="grow"
           placeholder={nickname}
+          onChange={handleChangeUserNickname}
         />
         <EditPencilSVG />
       </div>
@@ -29,7 +46,13 @@ export default function ProfileForm({ nickname }: profileFormProp) {
       </label>
 
       <div className="w-[600px] h-[45px] shadow-whiteShadow rounded-[5px] flex items-center pl-3 pr-2 mb-[60px]">
-        <input type="password" id="password" className="grow" />
+        <input
+          type="password"
+          id="password"
+          className="grow"
+          value={password}
+          onChange={handleChangeUserPassword}
+        />
         <EditPencilSVG />
       </div>
 

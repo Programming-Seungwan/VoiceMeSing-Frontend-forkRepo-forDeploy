@@ -7,13 +7,9 @@ import { useState, useEffect } from 'react';
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
 import ProfileSkeleton from '@components/profile/ProfileSkeleton';
 
-interface userProfileProp {
-  nickname: string;
-}
-
 export default function ProfilePage() {
-  const [userProfileInfo, setUserProfileInfo] =
-    useState<userProfileProp | null>(null);
+  const [userProfileNickName, setUserProfileNickName] = useState<string>('');
+  const [userProfilePassword, setUserProfilePassword] = useState<string>('');
   const accessToken = useAccessTokenRedirect();
 
   useEffect(() => {
@@ -35,7 +31,7 @@ export default function ProfilePage() {
 
         const refinedData = await reponse.json();
 
-        setUserProfileInfo(refinedData.data);
+        setUserProfileNickName(refinedData.data.nickname);
       } catch (err) {
         console.log(err);
       }
@@ -46,7 +42,7 @@ export default function ProfilePage() {
     }
   }, [accessToken]);
 
-  if (accessToken === null || userProfileInfo === null) {
+  if (accessToken === null || userProfileNickName === '') {
     return <ProfileSkeleton />;
   }
 
@@ -63,7 +59,12 @@ export default function ProfilePage() {
         {/* 해당 영역은 추후에 알맞는 이미지로 대체될 것임 */}
         <SeungwanImageSVG />
       </div>
-      <ProfileForm nickname={userProfileInfo.nickname} />
+      <ProfileForm
+        nickname={userProfileNickName}
+        password={userProfilePassword}
+        changeUserProfileNickname={setUserProfileNickName}
+        changeUserProfilePassword={setUserProfilePassword}
+      />
       <Footer />
     </main>
   );
