@@ -6,15 +6,18 @@ import CollectionSongItemSection from '@components/collections/song/CollectionSo
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
 import CollectionsModelSkeleton from '@components/collections/model/CollectionsModelSkeleton';
 import { useState, useEffect } from 'react';
+import { collectionSongType } from '@_type/collection/song/collectionSongType';
 
 export default function CollectionsSongPage() {
   const accessToken = useAccessTokenRedirect();
-  const [collectionSongList, setCollectionSongList] = useState();
+  const [collectionSongList, setCollectionSongList] = useState<
+    collectionSongType[] | null
+  >(null);
 
   useEffect(() => {
     async function getUserColletionSongs() {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/collection-song`,
+        `${process.env.NEXT_PUBLIC_BACKEND_DOMAIN}/collection-coversong`,
         {
           method: 'GET',
           credentials: 'include',
@@ -26,7 +29,7 @@ export default function CollectionsSongPage() {
 
       if (!response.ok) {
         throw new Error(
-          '사용자의 collecion model 페이지의 음성 모델을 불러오는 데에 실패했습니다!'
+          '사용자의 collecion song 페이지의 커버곡을 불러오는 데에 실패했습니다!'
         );
       }
 
@@ -35,11 +38,17 @@ export default function CollectionsSongPage() {
       setCollectionSongList(responseData.data);
     }
 
-    getUserColletionSongs();
+    if (accessToken === null) {
+      return;
+    } else {
+      getUserColletionSongs();
+    }
   }, [accessToken]);
+
+  console.log(collectionSongList);
   return (
     <>
-      {accessToken === null ? (
+      {accessToken === null || collectionSongList === null ? (
         <CollectionsModelSkeleton />
       ) : (
         <main className="rightMain items-center overflow-y-scroll relative">
@@ -49,7 +58,7 @@ export default function CollectionsSongPage() {
             </span>
             <NameSearchInput category="song" />
           </div>
-          <CollectionSongItemSection />
+          <CollectionSongItemSection songData={collectionSongList} />
           <Footer />
         </main>
       )}
