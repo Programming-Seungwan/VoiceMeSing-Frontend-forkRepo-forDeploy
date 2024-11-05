@@ -6,10 +6,10 @@ import { useAppSelector } from '@hooks/reduxHooks';
 import { useRouter } from 'next/navigation';
 
 interface profileFormProp {
-  nickname: string;
-  password: string;
-  changeUserProfileNickname: Dispatch<SetStateAction<string>>;
-  changeUserProfilePassword: Dispatch<SetStateAction<string>>;
+  nickname: string | null;
+  password: string | null;
+  changeUserProfileNickname: Dispatch<SetStateAction<string | null>>;
+  changeUserProfilePassword: Dispatch<SetStateAction<string | null>>;
 }
 
 export default function ProfileForm({
@@ -79,7 +79,7 @@ export default function ProfileForm({
           type="text"
           id="nickname"
           className="grow"
-          placeholder={nickname}
+          placeholder={nickname === null ? '' : nickname}
           onChange={handleChangeUserNickname}
         />
         <EditPencilSVG />
@@ -94,7 +94,7 @@ export default function ProfileForm({
           type="password"
           id="password"
           className="grow"
-          value={password}
+          value={password === null ? '' : password}
           onChange={handleChangeUserPassword}
         />
         <EditPencilSVG />

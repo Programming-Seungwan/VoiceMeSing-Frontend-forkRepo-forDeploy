@@ -8,8 +8,12 @@ import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
 import ProfileSkeleton from '@components/profile/ProfileSkeleton';
 
 export default function ProfilePage() {
-  const [userProfileNickName, setUserProfileNickName] = useState<string>('');
-  const [userProfilePassword, setUserProfilePassword] = useState<string>('');
+  const [userProfileNickName, setUserProfileNickName] = useState<string | null>(
+    null
+  );
+  const [userProfilePassword, setUserProfilePassword] = useState<string | null>(
+    null
+  );
   const accessToken = useAccessTokenRedirect();
 
   useEffect(() => {
@@ -42,7 +46,7 @@ export default function ProfilePage() {
     }
   }, [accessToken]);
 
-  if (accessToken === null || userProfileNickName === '') {
+  if (accessToken === null || userProfileNickName === null) {
     return <ProfileSkeleton />;
   }
 
