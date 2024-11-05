@@ -69,7 +69,11 @@
    - 권한 허용을 해놓은 사용자 곡들을 죄다 긁어와서 `/collections/song` 페이지의 양식으로 보여줄 수 있는 기능이 필요함
 
 6. `/login`
+
    - 카카오 로그인 이후에 outh2/redirect로 사용자를 보내고, 그 다음에 /token-reformat 요청을 보내 at를 받고 사용자를 홈으로 보내버림. 그런데 이렇게 상태로 들고 있는 at를 기반으로 새로고침 시, rt를 통해 reissue가 안됨
    - 경빈이가 리다이렉트를 localhost로 시켜주고 있음.
    - access token이 있는 경우에는 홈페이지로 보내야 함.
    - login page에서 sign up 페이지로 연결해야 함
+
+7. 디자인
+   - step indicator svg 파일과 화살표의 색상이 다름. 수정 요망
