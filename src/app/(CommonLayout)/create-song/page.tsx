@@ -67,6 +67,7 @@ export default function CreateSongPage() {
             setModelModalOpen={setIsSelectModelModalOpen}
             coverSongId={coverSongId}
             setCoverSongId={setCoverSongId}
+            accessToken={accessToken}
           />
 
           <Footer />

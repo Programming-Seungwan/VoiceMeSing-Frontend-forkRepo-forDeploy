@@ -1,12 +1,17 @@
+'use client';
+
 import { Dispatch, SetStateAction } from 'react';
 import ReactModal from 'react-modal';
 import ModalCloseSVG from '@public/all/modal/modalClose.svg';
+import { useGetUserModel } from '@hooks/model/useGetUserModel';
+import CollectionVocalItem from '@components/collections/model/CollectionVocalItem';
 
 interface selectModelModalProp {
   isSelectModelModalOpen: boolean;
   setModelModalOpen: Dispatch<SetStateAction<boolean>>;
   coverSongId: number | null;
   setCoverSongId: Dispatch<SetStateAction<number | null>>;
+  accessToken: string;
 }
 
 ReactModal.setAppElement('#root');
@@ -16,6 +21,7 @@ export default function SelectModelModal({
   setModelModalOpen,
   coverSongId,
   setCoverSongId,
+  accessToken,
 }: selectModelModalProp) {
   const customStyle: ReactModal.Styles = {
     overlay: {
@@ -29,11 +35,15 @@ export default function SelectModelModal({
       marginTop: '150px',
       marginLeft: 'auto',
       marginRight: 'auto',
+      paddingTop: '60px',
+      paddingRight: '20px',
+      paddingLeft: '20px',
       backgroundColor: '#232333',
       outline: 'none',
       borderRadius: '15px',
       opacity: 1,
-      display: 'flex',
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
       position: 'relative',
     },
   };
@@ -41,6 +51,8 @@ export default function SelectModelModal({
   const handleCloseModal = () => {
     setModelModalOpen((prev) => !prev);
   };
+
+  const { data: collectionModelList } = useGetUserModel(accessToken);
 
   return (
     <ReactModal
@@ -59,6 +71,14 @@ export default function SelectModelModal({
         className="absolute top-[30px] right-[20px] hover:cursor-pointer"
         onClick={handleCloseModal}
       />
+      {collectionModelList?.map((el) => {
+        return (
+          <CollectionVocalItem
+            key={el.voiceModelId}
+            voiceModelName={el.voiceModelName}
+          />
+        );
+      })}
     </ReactModal>
   );
 }
