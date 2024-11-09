@@ -5,16 +5,13 @@ import CollectionVocalItemSection from '@components/collections/model/Collection
 import useAccessTokenRedirect from '@hooks/useAccessTokenRedirect';
 import CollectionsModelSkeleton from '@components/collections/model/CollectionsModelSkeleton';
 import { useEffect, useState } from 'react';
-
-interface voiceModelProp {
-  voiceModelId: number;
-  voiceModelName: string;
-}
+import { collectionModelType } from '@_type/collection/model/collectionModelType';
 
 export default function CollectionsModelPage() {
   const accessToken = useAccessTokenRedirect();
-  const [collectionModelList, setCollectionModelList] =
-    useState<voiceModelProp | null>(null);
+  const [collectionModelList, setCollectionModelList] = useState<
+    collectionModelType[] | null
+  >(null);
 
   useEffect(() => {
     async function getUserColletionModels() {
@@ -45,11 +42,9 @@ export default function CollectionsModelPage() {
     }
   }, [accessToken]);
 
-  console.log(collectionModelList);
-
   return (
     <>
-      {accessToken === null ? (
+      {accessToken === null || collectionModelList === null ? (
         <CollectionsModelSkeleton />
       ) : (
         <main className="rightMain items-center overflow-y-scroll relative">
@@ -59,7 +54,7 @@ export default function CollectionsModelPage() {
             </span>
             <NameSearchInput category="model" />
           </div>
-          <CollectionVocalItemSection />
+          <CollectionVocalItemSection modelData={collectionModelList} />
           <Footer />
         </main>
       )}
