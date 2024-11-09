@@ -45,7 +45,6 @@ export default function CollectionsSongPage() {
     }
   }, [accessToken]);
 
-  console.log(collectionSongList);
   return (
     <>
       {accessToken === null || collectionSongList === null ? (

@@ -40,8 +40,12 @@ export default function CollectionsModelPage() {
       setCollectionModelList(responseData.data);
     }
 
-    getUserColletionModels();
+    if (accessToken !== null) {
+      getUserColletionModels();
+    }
   }, [accessToken]);
+
+  console.log(collectionModelList);
 
   return (
     <>
