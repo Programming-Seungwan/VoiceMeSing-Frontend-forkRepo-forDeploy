@@ -25,10 +25,17 @@ export const getUserModel = async (
     }
 
     const responseData = await response.json();
-    return responseData;
+    return responseData.data;
   } catch (err) {
     throw new Error(
       '사용자의 collecion model 페이지의 음성 모델을 불러오는 데에 실패했습니다!'
     );
   }
+};
+
+export const useGetUserModel = (accessToken: string) => {
+  return useQuery({
+    queryKey: ['userModel', accessToken],
+    queryFn: () => getUserModel(accessToken),
+  });
 };
