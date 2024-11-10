@@ -8,6 +8,7 @@ import { cn } from '@utils/cn';
 interface coverRelatedProp {
   coverModelId: number | null;
   setCoverModelId: Dispatch<SetStateAction<number | null>>;
+  setCoverModelName: Dispatch<SetStateAction<string | null>>;
 }
 
 type collectionVocalItemProp = collectionModelType & coverRelatedProp;
@@ -15,6 +16,7 @@ type collectionVocalItemProp = collectionModelType & coverRelatedProp;
 export default function CollectionVocalItem({
   coverModelId,
   setCoverModelId,
+  setCoverModelName,
   voiceModelId,
   voiceModelName,
 }: collectionVocalItemProp) {
@@ -25,10 +27,12 @@ export default function CollectionVocalItem({
   const handleClickVocalItem = () => {
     if (coverModelId === voiceModelId) {
       setCoverModelId(null);
+      setCoverModelName(null);
       return;
     }
 
     setCoverModelId(voiceModelId);
+    setCoverModelName(voiceModelName);
   };
 
   return (

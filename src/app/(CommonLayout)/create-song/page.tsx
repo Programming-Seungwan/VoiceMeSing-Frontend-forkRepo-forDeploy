@@ -17,6 +17,7 @@ export default function CreateSongPage() {
     setProgressState(newState);
   };
   const [coverModelId, setCoverModelId] = useState<number | null>(null);
+  const [coverModelName, setCoverModelName] = useState<string | null>(null);
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [coverSongName, setCoverSongName] = useState<string | null>(null);
   const accessToken = useAccessTokenRedirect();
@@ -40,6 +41,7 @@ export default function CreateSongPage() {
           <ProgressBar progressState={progressState} />
           {progressState === 1 && (
             <CreateSongFirstStep
+              coverModelName={coverModelName}
               setModelModalOpen={setIsSelectModelModalOpen}
             />
           )}
@@ -55,6 +57,8 @@ export default function CreateSongPage() {
             <CreateSongComplete
               createSongName={coverSongName}
               setCreateSongName={setCoverSongName}
+              coverModelId={coverModelId}
+              audioFile={audioFile}
             />
           )}
           <CreateSongPageNavigator
@@ -70,6 +74,7 @@ export default function CreateSongPage() {
             setModelModalOpen={setIsSelectModelModalOpen}
             coverModelId={coverModelId}
             setCoverModelId={setCoverModelId}
+            setCoverModelName={setCoverModelName}
             accessToken={accessToken}
           />
 

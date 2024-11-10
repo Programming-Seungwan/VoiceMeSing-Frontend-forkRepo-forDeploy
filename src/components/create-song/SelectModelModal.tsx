@@ -11,6 +11,7 @@ interface selectModelModalProp {
   setModelModalOpen: Dispatch<SetStateAction<boolean>>;
   coverModelId: number | null;
   setCoverModelId: Dispatch<SetStateAction<number | null>>;
+  setCoverModelName: Dispatch<SetStateAction<string | null>>;
   accessToken: string;
 }
 
@@ -21,6 +22,7 @@ export default function SelectModelModal({
   setModelModalOpen,
   coverModelId,
   setCoverModelId,
+  setCoverModelName,
   accessToken,
 }: selectModelModalProp) {
   const customStyle: ReactModal.Styles = {
@@ -79,6 +81,7 @@ export default function SelectModelModal({
             key={el.voiceModelId}
             coverModelId={coverModelId}
             setCoverModelId={setCoverModelId}
+            setCoverModelName={setCoverModelName}
             voiceModelId={el.voiceModelId}
             voiceModelName={el.voiceModelName}
           />
