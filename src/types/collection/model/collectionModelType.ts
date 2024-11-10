@@ -1,4 +1,4 @@
 export interface collectionModelType {
-  voiceModelId?: number;
+  voiceModelId: number;
   voiceModelName: string;
 }

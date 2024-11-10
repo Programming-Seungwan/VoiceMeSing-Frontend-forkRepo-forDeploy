@@ -9,8 +9,8 @@ import CollectionVocalItem from '@components/collections/model/CollectionVocalIt
 interface selectModelModalProp {
   isSelectModelModalOpen: boolean;
   setModelModalOpen: Dispatch<SetStateAction<boolean>>;
-  coverSongId: number | null;
-  setCoverSongId: Dispatch<SetStateAction<number | null>>;
+  coverModelId: number | null;
+  setCoverModelId: Dispatch<SetStateAction<number | null>>;
   accessToken: string;
 }
 
@@ -19,8 +19,8 @@ ReactModal.setAppElement('#root');
 export default function SelectModelModal({
   isSelectModelModalOpen,
   setModelModalOpen,
-  coverSongId,
-  setCoverSongId,
+  coverModelId,
+  setCoverModelId,
   accessToken,
 }: selectModelModalProp) {
   const customStyle: ReactModal.Styles = {
@@ -36,6 +36,7 @@ export default function SelectModelModal({
       marginLeft: 'auto',
       marginRight: 'auto',
       paddingTop: '60px',
+      paddingBottom: '40px',
       paddingRight: '20px',
       paddingLeft: '20px',
       backgroundColor: '#232333',
@@ -76,10 +77,17 @@ export default function SelectModelModal({
         return (
           <CollectionVocalItem
             key={el.voiceModelId}
+            coverModelId={coverModelId}
+            setCoverModelId={setCoverModelId}
+            voiceModelId={el.voiceModelId}
             voiceModelName={el.voiceModelName}
           />
         );
       })}
+
+      {/* <button className="bg-themeColor text-white rounded-[10px] w-[120px] h-[50px] absolute bottom-3">
+        Log In
+      </button> */}
     </ReactModal>
   );
 }
