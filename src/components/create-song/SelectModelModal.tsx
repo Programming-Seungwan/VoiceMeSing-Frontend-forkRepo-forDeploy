@@ -45,6 +45,7 @@ export default function SelectModelModal({
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
       position: 'relative',
+      overflowY: 'scroll',
     },
   };
 
@@ -58,7 +59,7 @@ export default function SelectModelModal({
     <ReactModal
       isOpen={isSelectModelModalOpen}
       style={customStyle}
-      className="modal-content"
+      className="modal-content scroll-modal"
       onRequestClose={handleCloseModal}
       closeTimeoutMS={50}
       parentSelector={() => {

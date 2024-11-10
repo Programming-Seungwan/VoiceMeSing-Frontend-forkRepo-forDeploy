@@ -20,6 +20,16 @@
   display: none;
 }
 
+.scroll-modal {
+  overflow: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-modal::-webkit-scrollbar {
+  display: none;
+}
+
 /* 모달이 열릴 때 초기 스타일 */
 .modal-content {
   opacity: 0;
