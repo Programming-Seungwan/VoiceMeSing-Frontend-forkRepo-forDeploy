@@ -58,6 +58,9 @@ export default function CreateSongPage() {
             />
           )}
           <CreateSongPageNavigator
+            coverModelId={coverModelId}
+            audioFile={audioFile}
+            coverSongName={coverSongName}
             progressState={progressState}
             handleProgressState={handleProgressState}
           />

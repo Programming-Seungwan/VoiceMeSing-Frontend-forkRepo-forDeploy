@@ -85,9 +85,14 @@ export default function SelectModelModal({
         );
       })}
 
-      {/* <button className="bg-themeColor text-white rounded-[10px] w-[120px] h-[50px] absolute bottom-3">
-        Log In
-      </button> */}
+      <div className="col-start-1 col-span-3 flex justify-center">
+        <button
+          className="bg-themeColor text-[20px] text-white rounded-[15px] w-[180px] h-[75px]"
+          onClick={handleCloseModal}
+        >
+          finish selection
+        </button>
+      </div>
     </ReactModal>
   );
 }

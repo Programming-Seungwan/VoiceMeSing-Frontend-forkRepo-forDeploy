@@ -2,18 +2,30 @@ import LeftGrayArrowSVG from '@public/all/PageNavigator/leftGrayArrow.svg';
 import RightGreenArrowSVG from '@public/all/PageNavigator/rightGreenArrow.svg';
 
 interface PageNavigatorProp {
+  coverModelId: number | null;
+  audioFile: File | null;
+  coverSongName: string | null;
   progressState: 1 | 2 | 3 | 4;
   handleProgressState: (nextState: 1 | 2 | 3 | 4) => void;
 }
 
 export default function CreateSongPageNavigator({
+  coverModelId,
+  audioFile,
+  coverSongName,
   progressState,
   handleProgressState,
 }: PageNavigatorProp) {
   const clickRightArrow = () => {
     if (progressState === 1) {
+      if (coverModelId === null) {
+        return;
+      }
       handleProgressState(2);
     } else if (progressState === 2) {
+      if (audioFile === null) {
+        return;
+      }
       handleProgressState(3);
     } else if (progressState === 3) {
       handleProgressState(4);

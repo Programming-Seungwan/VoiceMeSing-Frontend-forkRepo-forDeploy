@@ -14,9 +14,6 @@ export default function TrainVocalComplete({
     (selector) => selector.accessToken.accessToken
   );
   const handleClickMakeModelButton = async (): Promise<void> => {
-    console.log(audioFile);
-    console.log(modelName);
-
     const voiceFormData = new FormData();
     if (audioFile && modelName) {
       voiceFormData.append('voiceModelName', modelName);
