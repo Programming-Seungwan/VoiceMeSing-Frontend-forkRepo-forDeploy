@@ -13,6 +13,7 @@ export default function CollectionVocalItemSection({
       {modelData?.map((element) => (
         <CollectionVocalItem
           key={element.voiceModelId}
+          voiceModelId={element.voiceModelId}
           voiceModelName={element.voiceModelName}
         />
       ))}

@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from 'react';
 import ReactModal from 'react-modal';
 import ModalCloseSVG from '@public/all/modal/modalClose.svg';
 import { useGetUserModel } from '@hooks/model/useGetUserModel';
-import CollectionVocalItem from '@components/collections/model/CollectionVocalItem';
+import CollectionModalVocalItem from '@components/collections/model/CollectionModalVocalItem';
 
 interface selectModelModalProp {
   isSelectModelModalOpen: boolean;
@@ -77,7 +77,7 @@ export default function SelectModelModal({
       />
       {collectionModelList?.map((el) => {
         return (
-          <CollectionVocalItem
+          <CollectionModalVocalItem
             key={el.voiceModelId}
             coverModelId={coverModelId}
             setCoverModelId={setCoverModelId}

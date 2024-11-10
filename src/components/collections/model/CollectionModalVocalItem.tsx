@@ -5,23 +5,47 @@ import { usePathname } from 'next/navigation';
 import { Dispatch, SetStateAction } from 'react';
 import { cn } from '@utils/cn';
 
-export default function CollectionVocalItem({
+interface coverRelatedProp {
+  coverModelId: number | null;
+  setCoverModelId: Dispatch<SetStateAction<number | null>>;
+  setCoverModelName: Dispatch<SetStateAction<string | null>>;
+}
+
+type collectionVocalItemProp = collectionModelType & coverRelatedProp;
+
+export default function CollectionModalVocalItem({
+  coverModelId,
+  setCoverModelId,
+  setCoverModelName,
   voiceModelId,
   voiceModelName,
-}: collectionModelType) {
+}: collectionVocalItemProp) {
   const pathname = usePathname();
 
   const isNotCreateSongPage = pathname !== '/create-song' ? true : false;
+
+  const handleClickVocalItem = () => {
+    if (coverModelId === voiceModelId) {
+      setCoverModelId(null);
+      setCoverModelName(null);
+      return;
+    }
+
+    setCoverModelId(voiceModelId);
+    setCoverModelName(voiceModelName);
+  };
 
   return (
     <div
       className={cn(
         'rounded-[20px] relative flex flex-col items-center py-10 gap-y-4 hover:cursor-pointer',
         {
+          'shadow-whiteShadow': coverModelId === voiceModelId,
           'h-[300px]': isNotCreateSongPage,
           'h-[250px]': !isNotCreateSongPage,
         }
       )}
+      onClick={handleClickVocalItem}
     >
       {isNotCreateSongPage && (
         <RecyclingBinSVG className="absolute top-5 right-5" />
