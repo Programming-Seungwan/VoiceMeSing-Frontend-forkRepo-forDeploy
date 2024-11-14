@@ -5,7 +5,7 @@ import { collectionSongType } from '@_type/collection/song/collectionSongType';
 import WandooKongLogoSVG from '@public/SideNavBar/wandookongLogo.svg';
 import { useDeleteUserSong } from '@hooks/collections/song/useDeleteUserSong';
 import { Dispatch, SetStateAction } from 'react';
-import { clearPreviewData } from 'next/dist/server/api-utils';
+import makeMusicBase64DataToURL from '@utils/makeMusicBase64DataToURL';
 
 interface collectionSongItemProp extends collectionSongType {
   accessToken: string | null;
@@ -38,16 +38,7 @@ export default function CollectionSongItem({
     setPlayingSongId(coverSongId);
     setPlayingSongName(coverSongName);
     setPlayingSongAudio(coverSongFile);
-    const binaryString = atob(coverSongFile);
-    const len = binaryString.length;
-    const bytes = new Uint8Array(len);
-
-    for (let i = 0; i < len; i++) {
-      bytes[i] = binaryString.charCodeAt(i); // 문자열을 바이트로 변환
-    }
-
-    const blob = new Blob([bytes], { type: 'audio/mp3' });
-    const audioUrl = URL.createObjectURL(blob);
+    const audioUrl = makeMusicBase64DataToURL(coverSongFile);
     setPlayingSongAudioSourceString(audioUrl);
   };
 
