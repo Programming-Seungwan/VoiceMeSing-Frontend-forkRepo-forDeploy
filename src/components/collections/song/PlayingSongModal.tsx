@@ -2,15 +2,36 @@
 
 import ReactModal from 'react-modal';
 import ModalCloseSVG from '@public/all/modal/modalClose.svg';
-import { Dispatch, SetStateAction } from 'react';
+import WandookongLogoSVG from '@public/SideNavBar/wandookongLogo.svg';
+import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 interface playingSongModalProp {
   isPlayingSongModalOpen: boolean;
+  playingSongId: number | null;
+  playingSongName: string | null;
+  playingSongAudio: File | null;
+  playingSongAudioSourceString: string | null;
+  setIsPlayingSongModalOpen: Dispatch<SetStateAction<boolean>>;
+  setPlayingSongId: Dispatch<SetStateAction<number | null>>;
+  setPlayingSongName: Dispatch<SetStateAction<string | null>>;
+  setPlayingSongAudio: Dispatch<SetStateAction<File | null>>;
+  setPlayingSongAudioSourceString: Dispatch<SetStateAction<string | null>>;
 }
 
 ReactModal.setAppElement('#root');
 
-export default function PlayingSongModal() {
+export default function PlayingSongModal({
+  isPlayingSongModalOpen,
+  playingSongId,
+  playingSongName,
+  playingSongAudio,
+  playingSongAudioSourceString,
+  setIsPlayingSongModalOpen,
+  setPlayingSongId,
+  setPlayingSongName,
+  setPlayingSongAudio,
+  setPlayingSongAudioSourceString,
+}: playingSongModalProp) {
   const customStyle: ReactModal.Styles = {
     overlay: {
       marginLeft: '300px',
@@ -33,16 +54,44 @@ export default function PlayingSongModal() {
       opacity: 1,
       position: 'relative',
       overflowY: 'scroll',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
     },
+  };
+
+  const handleClosePlayingSongModal = () => {
+    setIsPlayingSongModalOpen(false);
+    setPlayingSongId(null);
+    setPlayingSongAudio(null);
+    setPlayingSongName(null);
+    URL.revokeObjectURL(playingSongAudioSourceString as string); // 메모리 누수를 위한 정리
+    setPlayingSongAudioSourceString(null);
   };
 
   return (
     <ReactModal
-      isOpen={true}
+      isOpen={isPlayingSongModalOpen}
       style={customStyle}
       className="modal-content scroll-modal"
+      onRequestClose={handleClosePlayingSongModal}
+      closeTimeoutMS={50}
+      parentSelector={() => {
+        return document.querySelector(
+          '#collections-song-modal-container'
+        ) as HTMLDivElement;
+      }}
     >
-      <ModalCloseSVG className="absolute top-[30px] right-[20px] hover:cursor-pointer" />
+      <ModalCloseSVG
+        className="absolute top-[30px] right-[20px] hover:cursor-pointer"
+        onClick={handleClosePlayingSongModal}
+      />
+      <div className="animate-imageFloat mt-5 py-5">
+        <WandookongLogoSVG />
+      </div>
+
+      <div>{playingSongName}</div>
+      <audio controls src={playingSongAudioSourceString as string}></audio>
     </ReactModal>
   );
 }
