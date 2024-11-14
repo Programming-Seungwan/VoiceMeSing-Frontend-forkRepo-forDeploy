@@ -2,8 +2,10 @@
 
 import ReactModal from 'react-modal';
 import ModalCloseSVG from '@public/all/modal/modalClose.svg';
-import WandookongLogoSVG from '@public/SideNavBar/wandookongLogo.svg';
-import { Dispatch, SetStateAction, useState, useEffect } from 'react';
+import { Dispatch, SetStateAction } from 'react';
+import ModelingAISVG from '@public/home/modelingAI.svg';
+import MakingSongSVG from '@public/home/makingSongAI.svg';
+import SongToggleButton from '@components/collections/song/SongToggleButton';
 
 interface playingSongModalProp {
   isPlayingSongModalOpen: boolean;
@@ -87,11 +89,17 @@ export default function PlayingSongModal({
         onClick={handleClosePlayingSongModal}
       />
       <div className="animate-imageFloat mt-5 py-5">
-        <WandookongLogoSVG />
+        <ModelingAISVG />
       </div>
 
       <div>{playingSongName}</div>
-      <audio controls src={playingSongAudioSourceString as string}></audio>
+      <audio
+        controls
+        src={playingSongAudioSourceString as string}
+        className="mt-[5%]"
+      ></audio>
+
+      <SongToggleButton label="wow" />
     </ReactModal>
   );
 }
