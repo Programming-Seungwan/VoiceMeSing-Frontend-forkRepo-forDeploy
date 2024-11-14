@@ -35,7 +35,7 @@ export default function CollectionVocalItem({
     >
       {isNotCreateSongPage && (
         <RecyclingBinSVG
-          className="absolute top-5 right-5"
+          className="absolute top-5 right-5 hover:cursor-pointer"
           onClick={deleteUserModel}
         />
       )}
@@ -45,7 +45,7 @@ export default function CollectionVocalItem({
       <span className="w-[80%] h-fit flex justify-center items-center text-[20px] text-white normalFont">
         {voiceModelName}
       </span>
-      <div className="'w-[80%] h-fit flex flex-col text-[15px] normalFont items-start'">
+      <div className="'w-[80%] h-fit flex text-[15px] normalFont justify-start'">
         <span className="text-themeColor">Show Details</span>
       </div>
     </div>

@@ -21,7 +21,7 @@
 }
 
 .scroll-modal {
-  overflow: hidden;
+  overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
