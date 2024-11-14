@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { modelDeleteResultResponse } from './deleteResponseType';
+import { modelDeleteResponseType } from './modelDeleteResponseType';
 
 export const deleteUserModel = async (
   voiceModelId: number,
   accessToken: string | null
-): Promise<modelDeleteResultResponse> => {
+): Promise<modelDeleteResponseType> => {
   try {
     const modelData = {
       voiceModelId: voiceModelId.toString(),
@@ -17,6 +17,7 @@ export const deleteUserModel = async (
         credentials: 'include',
         headers: {
           access: `${accessToken}`,
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(modelData),
       }
@@ -39,8 +40,8 @@ export const useDeleteUserModel = (
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: () => deleteUserModel(voiceModelId, accessToken),
-    onSuccess: () => [
-      queryClient.invalidateQueries({ queryKey: ['userModel', accessToken] }),
-    ],
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userModel', accessToken] });
+    },
   });
 };

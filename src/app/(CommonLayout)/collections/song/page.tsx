@@ -25,7 +25,10 @@ export default function CollectionsSongPage() {
             </span>
             <NameSearchInput category="song" />
           </div>
-          <CollectionSongItemSection songData={collectionSongList} />
+          <CollectionSongItemSection
+            songData={collectionSongList}
+            accessToken={accessToken}
+          />
           <Footer />
         </main>
       )}

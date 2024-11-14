@@ -3,10 +3,12 @@ import CollectionSongItem from './CollectionSongItem';
 
 interface collectionSongItemSectionProp {
   songData: collectionSongType[] | null;
+  accessToken: string | null;
 }
 
 export default function CollectionSongItemSection({
   songData,
+  accessToken,
 }: collectionSongItemSectionProp) {
   return (
     <section className="w-full grow grid grid-cols-3 mt-10 gap-x-[100px] scroll-box">
@@ -17,6 +19,7 @@ export default function CollectionSongItemSection({
           coverSongFile={element.coverSongFile}
           coverSongName={element.coverSongName}
           isPublic={element.isPublic}
+          accessToken={accessToken}
         />
       ))}
     </section>
