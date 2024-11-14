@@ -20,6 +20,8 @@ export default function CollectionSongItem({
     coverSongId,
     accessToken
   );
+
+  // 모달창에 띄워질 곡의 이름, 파일, 그리고 id에 대한 상태를 만들고 이를 모달에 띄운다.
   return (
     <div className="rounded-[20px] relative flex flex-col items-center py-10 gap-y-4 hover:cursor-pointer">
       <RecyclingBinSVG
