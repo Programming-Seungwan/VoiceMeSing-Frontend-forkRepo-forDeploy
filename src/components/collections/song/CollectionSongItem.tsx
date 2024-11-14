@@ -20,7 +20,7 @@ export default function CollectionSongItem({
   coverSongId,
   coverSongName,
   coverSongFile,
-  isPublic,
+  public: ispublic,
   accessToken,
   setIsPlayingSongModalOpen,
   setPlayingSongId,

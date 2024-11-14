@@ -29,7 +29,7 @@ export default function CollectionSongItemSection({
           coverSongId={element.coverSongId}
           coverSongFile={element.coverSongFile}
           coverSongName={element.coverSongName}
-          isPublic={element.isPublic}
+          public={element.public}
           accessToken={accessToken}
           setIsPlayingSongModalOpen={setIsPlayingSongModalOpen}
           setPlayingSongId={setPlayingSongId}

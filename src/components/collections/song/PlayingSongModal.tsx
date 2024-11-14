@@ -9,7 +9,7 @@ import SongToggleButton from '@components/collections/song/SongToggleButton';
 
 interface playingSongModalProp {
   isPlayingSongModalOpen: boolean;
-  playingSongId: number | null;
+  playingSongId: number;
   playingSongName: string | null;
   playingSongAudio: File | null;
   playingSongAudioSourceString: string | null;
@@ -18,6 +18,8 @@ interface playingSongModalProp {
   setPlayingSongName: Dispatch<SetStateAction<string | null>>;
   setPlayingSongAudio: Dispatch<SetStateAction<File | null>>;
   setPlayingSongAudioSourceString: Dispatch<SetStateAction<string | null>>;
+  isSongPublic: boolean;
+  accessToken: string | null;
 }
 
 ReactModal.setAppElement('#root');
@@ -33,6 +35,8 @@ export default function PlayingSongModal({
   setPlayingSongName,
   setPlayingSongAudio,
   setPlayingSongAudioSourceString,
+  isSongPublic,
+  accessToken,
 }: playingSongModalProp) {
   const customStyle: ReactModal.Styles = {
     overlay: {
@@ -99,7 +103,11 @@ export default function PlayingSongModal({
         className="mt-[5%]"
       ></audio>
 
-      <SongToggleButton label="wow" />
+      <SongToggleButton
+        label={isSongPublic}
+        playingSongId={playingSongId}
+        accessToken={accessToken}
+      />
     </ReactModal>
   );
 }

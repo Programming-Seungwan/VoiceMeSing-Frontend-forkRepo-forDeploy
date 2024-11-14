@@ -48,7 +48,7 @@ export default function CollectionsSongPage() {
           <PlayingSongModal
             isPlayingSongModalOpen={isPlayingSongModalOpen}
             setIsPlayingSongModalOpen={setIsPlayingSongModalOpen}
-            playingSongId={playingSongId}
+            playingSongId={playingSongId as number}
             setPlayingSongId={setPlayingSongId}
             playingSongName={playingSongName}
             setPlayingSongName={setPlayingSongName}
@@ -56,6 +56,11 @@ export default function CollectionsSongPage() {
             setPlayingSongAudio={setPlayingSongAudio}
             playingSongAudioSourceString={playingSongAudioSourceString}
             setPlayingSongAudioSourceString={setPlayingSongAudioSourceString}
+            isSongPublic={
+              collectionSongList.find((el) => el.coverSongId === playingSongId)
+                ?.public as boolean
+            }
+            accessToken={accessToken}
           />
           <Footer />
         </main>

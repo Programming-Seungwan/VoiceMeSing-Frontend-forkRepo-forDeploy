@@ -3,11 +3,11 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export const toggleSongOpeness = async (
   coverSongId: number,
-  accessToken: string
+  accessToken: string | null
 ): Promise<toggleSongOpenessResponseType> => {
   try {
     const toggleData = {
-      coverSongId: coverSongId.toString(),
+      coverSongId: coverSongId?.toString(),
     };
 
     const response = await fetch(
@@ -35,7 +35,7 @@ export const toggleSongOpeness = async (
 
 export const useToggleSongOpeness = (
   coverSongId: number,
-  accessToken: string
+  accessToken: string | null
 ) => {
   const queryClient = useQueryClient();
   return useMutation({
