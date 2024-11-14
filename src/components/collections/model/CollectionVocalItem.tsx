@@ -26,11 +26,7 @@ export default function CollectionVocalItem({
   return (
     <div
       className={cn(
-        'rounded-[20px] relative flex flex-col items-center py-10 gap-y-4 hover:cursor-pointer',
-        {
-          'h-[300px]': isNotCreateSongPage,
-          'h-[250px]': !isNotCreateSongPage,
-        }
+        'rounded-[20px] relative flex flex-col items-center py-10 gap-y-4 hover:cursor-pointer h-fit bg-lightNavy'
       )}
     >
       {isNotCreateSongPage && (
