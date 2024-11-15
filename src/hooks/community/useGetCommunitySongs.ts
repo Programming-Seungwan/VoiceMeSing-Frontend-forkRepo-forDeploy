@@ -24,6 +24,6 @@ export const getCommunitySongs =
 export const useGetCommunitySongs = () => {
   return useQuery({
     queryKey: ['communitySong'],
-    queryFn: getCommunitySongs,
+    queryFn: () => getCommunitySongs(),
   });
 };
