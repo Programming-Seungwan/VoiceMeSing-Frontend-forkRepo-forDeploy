@@ -62,7 +62,7 @@ export default function EmailPasswordLoginSection() {
       <div className="w-[50%] h-fit flex flex-col gap-y-[35px] py-5">
         <span className="text-[30px] normalFont">Enter your password</span>
         <input
-          type="text"
+          type="password"
           placeholder="Enter your secret password"
           className="shadow-whiteShadow w-full h-10 rounded-[5px] pl-3"
           onChange={(event) => handleChangePassword(event.target.value)}
