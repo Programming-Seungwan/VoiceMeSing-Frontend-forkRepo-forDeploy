@@ -51,6 +51,7 @@ export default function CreateSongComplete({
       );
 
       if (!response.ok) {
+        router.push('/');
         throw new Error(
           "Failed to make ai cover song based on user's voice model"
         );
@@ -92,7 +93,7 @@ export default function CreateSongComplete({
         className="w-[150px] h-[60px] text-white bg-themeColor rounded-[10px] mt-[100px]"
         onClick={handleClickCreateCoverSongButton}
       >
-        Make Model
+        Make AI Cover Song
       </button>
     </section>
   );

@@ -1,5 +1,6 @@
 'use client';
 import { useAppSelector } from '@hooks/reduxHooks';
+import { useRouter } from 'next/navigation';
 
 interface trainVocalCompleteProp {
   audioFile: File | null;
@@ -13,6 +14,9 @@ export default function TrainVocalComplete({
   const accessToken = useAppSelector(
     (selector) => selector.accessToken.accessToken
   );
+
+  const router = useRouter();
+
   const handleClickMakeModelButton = async (): Promise<void> => {
     const voiceFormData = new FormData();
     if (audioFile && modelName) {
@@ -34,6 +38,8 @@ export default function TrainVocalComplete({
     if (!response.ok) {
       throw new Error('모델명과 음성 파일 전송 요청에 오류가 발생했습니다!');
     }
+
+    router.push('/');
   };
 
   return (
